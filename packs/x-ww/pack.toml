@@ -1,1 +1,13 @@
+name = "x-ww"
+author = "vlogf"
+version = "0.0.1"
+pack-format = "packwiz:1.1.0"
 
+[index]
+file = "index.toml"
+hash-format = "sha256"
+hash = "6f4522f72c44d0c1adcabc09f2e3228755d42426bb8eaaccae060c52cfdca51b"
+
+[versions]
+minecraft = "1.21.1"
+neoforge = "21.1.248"
