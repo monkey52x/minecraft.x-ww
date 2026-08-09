@@ -1,0 +1,17 @@
+{
+  "schema_version": 1,
+  "builds": [
+    {
+      "id": "x-ww-main",
+      "name": "X-WW",
+      "version": "1.0.0",
+      "description": "Main X-WW build",
+      "minecraft": "1.21.1",
+      "loader": "NeoForge 21.1.248",
+      "archive": {
+        "url": "https://github.com/monkey52x/minecraft.x-ww/releases/download/Test/x-ww.zip",
+        "sha256": "00ebcdf1952900f2873b2265f8d3c262835ffdbdac9119a8cfe6c66c4b37677f"
+      }
+    }
+  ]
+}
