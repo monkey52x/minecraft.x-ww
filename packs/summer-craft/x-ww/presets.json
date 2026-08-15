@@ -1,23 +1,5 @@
 {
   "schema_version": 1,
-  "toggles": {
-    "test": {
-      "name": "test",
-      "default": false,
-      "mods": [
-        "sodium"
-      ]
-    }
-  },
-  "profiles": {
-    "test2": {
-      "name": "test2",
-      "disable_mods": [
-        "sodium"
-      ],
-      "disable_resourcepacks": [
-        "fresh-animations"
-      ]
-    }
-  }
+  "toggles": {},
+  "profiles": {}
 }

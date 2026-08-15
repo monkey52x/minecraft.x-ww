@@ -1,8 +1,10 @@
 {
   "schema_version": 1,
-  "version": "1.0.4",
+  "version": "1.1.0",
   "entries": [
-    "Изменены переносимые параметры config/almostunified/debug.json: cache_recipe_conditions"
+    "Удалён переключатель test",
+    "Удалён профиль test2",
+    "Удалено правило переноса config/almostunified/debug.json"
   ],
   "notes": ""
 }
