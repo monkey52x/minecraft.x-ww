@@ -26,6 +26,19 @@
         "sha256": "a381e9efa34129d43478d91de696265f0c8b5ac9a71ff55c116cb61537547408",
         "size": 971
       }
+    },
+    {
+      "id": "test",
+      "pack_id": "test",
+      "name": "test",
+      "description": "",
+      "minecraft": "1.21.1",
+      "loader": "NeoForge 21.1.247",
+      "archive": {
+        "url": "https://github.com/monkey52x/minecraft.x-ww/releases/download/pack-test-bootstrap/instance.zip",
+        "sha256": "7e002065b2a4f01925d4086f6a717cb3dc67eecc4d11947aff51614fd144c049",
+        "size": 957
+      }
     }
   ]
 }
