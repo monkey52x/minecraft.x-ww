@@ -1,6 +1,6 @@
 {
   "schema_version": 2,
-  "version": "1.1.0",
+  "version": "1.1.1",
   "files": [
     {
       "path": "options.txt",
@@ -11,8 +11,8 @@
     },
     {
       "path": "x-ww/changelog.json",
-      "sha256": "6d5b5cd6bd2cfcade4362cea875b221f06ee5632e1b6a02d766a6f64d81cb345",
-      "size": 261,
+      "sha256": "2b0bf2b4cb258fd2a45248142119410ad82d9529226def7b33143d4b93430ee8",
+      "size": 137,
       "strategy": "replace",
       "format": null
     },

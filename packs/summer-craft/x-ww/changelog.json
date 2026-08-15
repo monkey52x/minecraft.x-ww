@@ -1,10 +1,8 @@
 {
   "schema_version": 1,
-  "version": "1.1.0",
+  "version": "1.1.1",
   "entries": [
-    "Удалён переключатель test",
-    "Удалён профиль test2",
-    "Удалено правило переноса config/almostunified/debug.json"
+    "Изменены сведения: версия"
   ],
   "notes": ""
 }
