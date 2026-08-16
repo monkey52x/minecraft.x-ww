@@ -1,6 +1,8 @@
 {
   "schema_version": 1,
-  "version": "1.0.0",
-  "entries": [],
+  "version": "1.0.1",
+  "entries": [
+    "Изменены сведения: описание"
+  ],
   "notes": ""
 }
