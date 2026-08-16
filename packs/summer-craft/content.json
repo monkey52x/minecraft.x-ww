@@ -6,7 +6,7 @@
       "path": "options.txt",
       "sha256": "f231f3e73ca35fa1d331a2605d12c69e659b7a7e7d7309690160c2ef4686e83d",
       "size": 29344,
-      "strategy": "preserve",
+      "strategy": "replace",
       "format": null
     },
     {
