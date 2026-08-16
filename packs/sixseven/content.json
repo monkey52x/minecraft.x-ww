@@ -1,0 +1,27 @@
+{
+  "schema_version": 2,
+  "version": "1.0.0",
+  "files": [
+    {
+      "path": "options.txt",
+      "sha256": "f231f3e73ca35fa1d331a2605d12c69e659b7a7e7d7309690160c2ef4686e83d",
+      "size": 29344,
+      "strategy": "preserve",
+      "format": null
+    },
+    {
+      "path": "x-ww/changelog.json",
+      "sha256": "0265ea492ef19686be3f6243a10c0edc9ef8e3591645f1fc3297079ab1a5da6c",
+      "size": 80,
+      "strategy": "replace",
+      "format": null
+    },
+    {
+      "path": "x-ww/manifest.json",
+      "sha256": "36f3669be80add63dc67007f1ee81746d5b419c9b1e6fa4b67ca9ded5c48eefb",
+      "size": 452,
+      "strategy": "replace",
+      "format": null
+    }
+  ]
+}

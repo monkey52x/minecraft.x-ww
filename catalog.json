@@ -52,6 +52,19 @@
         "sha256": "9c7defca9d57460d05f1a7aeee2c100ad5673789fb59a13459fa5625ee49c310",
         "size": 971
       }
+    },
+    {
+      "id": "sixseven",
+      "pack_id": "sixseven",
+      "name": "sixseven",
+      "description": "",
+      "minecraft": "1.21.1",
+      "loader": "NeoForge 21.1.248",
+      "archive": {
+        "url": "https://github.com/monkey52x/minecraft.x-ww/releases/download/pack-sixseven-bootstrap/instance.zip",
+        "sha256": "6b7b68642db0f0b27ea9b61c1e82ba227fe62231f5e43a4c08829b5f6a991534",
+        "size": 958
+      }
     }
   ]
 }

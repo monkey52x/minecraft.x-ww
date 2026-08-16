@@ -1,0 +1,21 @@
+{
+  "schema_version": 2,
+  "id": "sixseven",
+  "pack_id": "sixseven",
+  "name": "sixseven",
+  "description": "",
+  "minecraft": "1.21.1",
+  "loader": {
+    "type": "neoforge",
+    "version": "21.1.248"
+  },
+  "java": {
+    "major": 21
+  },
+  "packwiz": {
+    "url": "https://monkey52x.github.io/minecraft.x-ww/packs/sixseven/pack.toml"
+  },
+  "launcher_data": {
+    "url": "https://monkey52x.github.io/minecraft.x-ww/packs/sixseven/content.json"
+  }
+}
