@@ -15,19 +15,6 @@
       }
     },
     {
-      "id": "summer-craft",
-      "pack_id": "summer-craft",
-      "name": "Summer Craft",
-      "description": "",
-      "minecraft": "1.21.1",
-      "loader": "NeoForge 21.1.247",
-      "archive": {
-        "url": "https://github.com/monkey52x/minecraft.x-ww/releases/download/pack-summer-craft-bootstrap/instance.zip",
-        "sha256": "a381e9efa34129d43478d91de696265f0c8b5ac9a71ff55c116cb61537547408",
-        "size": 971
-      }
-    },
-    {
       "id": "test",
       "pack_id": "test",
       "name": "test",
@@ -51,6 +38,19 @@
         "url": "https://github.com/monkey52x/minecraft.x-ww/releases/download/pack-test2-bootstrap/instance.zip",
         "sha256": "456bfbfe8a3dba720723e7b57ddee1b16e38ba63aecd592acc67ee08ff5c9bbb",
         "size": 958
+      }
+    },
+    {
+      "id": "summer-craft",
+      "pack_id": "summer-craft",
+      "name": "Summer Craft",
+      "description": "",
+      "minecraft": "1.21.1",
+      "loader": "NeoForge 21.1.248",
+      "archive": {
+        "url": "https://github.com/monkey52x/minecraft.x-ww/releases/download/pack-summer-craft-bootstrap/instance.zip",
+        "sha256": "9c7defca9d57460d05f1a7aeee2c100ad5673789fb59a13459fa5625ee49c310",
+        "size": 971
       }
     }
   ]
