@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
-  "version": "0.1.0",
-  "release_url": "https://github.com/monkey52x/minecraft.x-ww/releases",
-  "mandatory": false,
-  "changelog": "Initial GitHub distribution metadata."
+  "version": "0.2.0",
+  "release_url": "https://github.com/monkey52x/minecraft.x-ww/releases/tag/launcher-v0.2.0",
+  "mandatory": true,
+  "changelog": ""
 }
