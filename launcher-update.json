@@ -1,7 +1,9 @@
 {
   "schema_version": 1,
-  "version": "0.3.0",
-  "release_url": "https://github.com/monkey52x/minecraft.x-ww/releases/tag/launcher-v0.3.0",
-  "mandatory": true,
-  "changelog": ""
+  "version": "0.2.0",
+  "mandatory": false,
+  "changelog": "Initial GitHub distribution metadata.",
+  "installer_url": "https://github.com/monkey52x/minecraft.x-ww/releases/download/launcher/launcher-windows-x64.exe",
+  "installer_size": 1,
+  "installer_sha256": "0000000000000000000000000000000000000000000000000000000000000000"
 }
