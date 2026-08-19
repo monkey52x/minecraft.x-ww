@@ -1,0 +1,18 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>X-WW Launcher</title>
+  <script>
+    const base = "/x-ww/";
+    const path = location.pathname
+      .replace(base, "")
+      .replace(/^\/+/, "");
+
+    const target = base + (path ? "#/" + path : "");
+
+    location.replace(target);
+  </script>
+</head>
+<body></body>
+</html>
