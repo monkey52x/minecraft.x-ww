@@ -1,9 +1,13 @@
 {
   "schema_version": 1,
-  "version": "1.0.2",
+  "version": "1.0.3",
   "entries": [
-    "Изменены сведения: описание, версия",
-    "Изменены сведения: версия"
+    "Добавлен переключатель test1",
+    "Добавлен профиль test2",
+    "Изменены сведения: описание",
+    "Добавлен мод Cloth Config API cloth-config-15.0.140-neoforge",
+    "Добавлен мод Sodium sodium-neoforge-0.8.13-beta.2+mc1.21.1",
+    "Добавлен мод Iris Shaders iris-neoforge-1.8.14-beta.1+mc1.21.1"
   ],
-  "notes": ""
+  "notes": "test мое сообдение"
 }
