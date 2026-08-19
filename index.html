@@ -5,7 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="theme-color" content="#0a0015">
   <title>X-WW Launcher</title>
-  <link rel="icon" type="image/png" href="assets/images/favicon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon.png">
+  <link rel="shortcut icon" type="image/png" href="./assets/images/favicon.png">
+  <link rel="apple-touch-icon" href="./assets/images/favicon.png">
   <style>
     :root {
       --bg-primary: #0a0015;
@@ -143,7 +145,7 @@
     h1 {
       max-width: 700px;
       font-size: clamp(46px, 7vw, 78px);
-      line-height: .98;
+      line-height: 1.06;
       letter-spacing: -.055em;
     }
     h1 span {
@@ -414,6 +416,43 @@
       box-shadow: 0 0 14px rgba(124,58,237,.22);
     }
 
+
+    .footer-links {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .footer-link {
+      padding: 7px 10px;
+      border: 1px solid var(--border-glass);
+      border-radius: 9px;
+      color: var(--white-dim);
+      background: rgba(255,255,255,.04);
+      transition: .2s ease;
+    }
+
+    .footer-link:hover {
+      color: var(--white);
+      border-color: var(--border-hover);
+      background: rgba(255,255,255,.07);
+    }
+
+    .github-link {
+      width: 34px;
+      height: 34px;
+      padding: 7px;
+      display: grid;
+      place-items: center;
+    }
+
+    .github-link svg {
+      width: 18px;
+      height: 18px;
+      display: block;
+    }
+
     @media (max-width: 880px) {
       .hero { grid-template-columns: 1fr; min-height: auto; padding-top: 84px; }
       .hero-copy { text-align:center; }
@@ -485,7 +524,7 @@
         <div class="shot-placeholder hero-shot-placeholder">
           <div>
             <b>X-WW Launcher</b>
-            <span>assets/images/launcher-hero-ru.png</span>
+            <span data-shot-path="launcher-hero">assets/images/launcher-hero-ru.png</span>
           </div>
         </div>
       </div>
@@ -527,7 +566,7 @@
             <span class="shot-number">01</span>
             <img class="lang-shot" data-shot="launcher-main" src="assets/images/launcher-main-ru.png" alt="X-WW Launcher">
             <div class="shot-placeholder">
-              <div><b>Главное окно лаунчера</b><span>assets/images/launcher-main.png</span></div>
+              <div><b data-i18n="shotMainLabel">Главное окно лаунчера</b><span data-shot-path="launcher-main">assets/images/launcher-main-ru.png</span></div>
             </div>
           </div>
 
@@ -535,7 +574,7 @@
             <span class="shot-number">02</span>
             <img class="lang-shot" data-shot="launcher-download" src="assets/images/launcher-download-ru.png" alt="X-WW Launcher">
             <div class="shot-placeholder">
-              <div><b>Загрузка сборки</b><span>assets/images/launcher-download.png</span></div>
+              <div><b data-i18n="shotDownloadLabel">Загрузка сборки</b><span data-shot-path="launcher-download">assets/images/launcher-download-ru.png</span></div>
             </div>
           </div>
 
@@ -543,7 +582,7 @@
             <span class="shot-number">03</span>
             <img class="lang-shot" data-shot="launcher-settings" src="assets/images/launcher-settings-ru.png" alt="X-WW Launcher">
             <div class="shot-placeholder">
-              <div><b>Настройки</b><span>assets/images/launcher-settings.png</span></div>
+              <div><b data-i18n="shotSettingsLabel">Настройки</b><span data-shot-path="launcher-settings">assets/images/launcher-settings-ru.png</span></div>
             </div>
           </div>
         </div>
@@ -558,7 +597,7 @@
             <h2 style="margin-top:0" data-i18n="downloadTitle">Скачать X-WW Launcher</h2>
             <p data-i18n="downloadText">Скачай лаунчер, запусти его и выбери сборку. Все необходимые игровые файлы будут подготовлены автоматически.</p>
           </div>
-          <a class="btn primary" id="downloadButton" href="https://github.com/monkey52x/x-ww/releases"><span data-i18n="downloadLatest">↓ Скачать последнюю версию</span></a>
+          <a class="btn primary" id="downloadButton" href="https://github.com/monkey52x/minecraft.x-ww/releases/download/launcher/launcher-windows-x64.exe"><span data-i18n="downloadLatest">↓ Скачать последнюю версию</span></a>
         </div>
       </div>
     </section>
@@ -567,12 +606,20 @@
   <footer>
     <div class="container footer-inner">
       <span>© <span id="year"></span> X-WW</span>
-      <span>Launcher · Minecraft · X-WW</span>
+      <div class="footer-links">
+        <a class="footer-link github-link" href="https://github.com/monkey52x/minecraft.x-ww" target="_blank" rel="noopener noreferrer" aria-label="GitHub" title="GitHub">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path fill="currentColor" d="M12 .7a11.5 11.5 0 0 0-3.64 22.41c.58.1.79-.25.79-.56v-2.23c-3.22.7-3.9-1.37-3.9-1.37-.53-1.34-1.29-1.7-1.29-1.7-1.05-.72.08-.71.08-.71 1.17.08 1.78 1.2 1.78 1.2 1.04 1.78 2.72 1.27 3.38.97.1-.75.4-1.27.74-1.56-2.57-.29-5.27-1.29-5.27-5.69 0-1.26.45-2.28 1.19-3.09-.12-.29-.52-1.47.11-3.05 0 0 .97-.31 3.16 1.18A10.96 10.96 0 0 1 12 6.11c.98 0 1.95.13 2.87.39 2.19-1.49 3.16-1.18 3.16-1.18.63 1.58.23 2.76.11 3.05.74.81 1.19 1.83 1.19 3.09 0 4.42-2.71 5.39-5.29 5.68.42.36.79 1.07.79 2.16v3.25c0 .31.21.67.8.56A11.5 11.5 0 0 0 12 .7Z"/>
+          </svg>
+        </a>
+        <a class="footer-link site-link" href="https://x-ww.xyz/" target="_blank" rel="noopener noreferrer">
+          <span data-i18n="ourSite">Наш сайт</span>&nbsp; X-WW
+        </a>
+      </div>
     </div>
   </footer>
 
   <script>
-    const GITHUB = { owner: "monkey52x", repo: "x-ww" };
 
     const translations = {
       ru: {
@@ -594,10 +641,14 @@
         interfaceSection: "Интерфейс",
         screenshotsTitle: "Скриншоты",
         screenshotsText: "Скриншоты интерфейса X-WW Launcher.",
+        shotMainLabel: "Главное окно лаунчера",
+        shotDownloadLabel: "Загрузка сборки",
+        shotSettingsLabel: "Настройки",
         latestRelease: "Последняя версия",
         downloadTitle: "Скачать X-WW Launcher",
         downloadText: "Скачай лаунчер, запусти его и выбери сборку. Все необходимые игровые файлы будут подготовлены автоматически.",
-        downloadLatest: "↓ Скачать последнюю версию"
+        downloadLatest: "↓ Скачать последнюю версию",
+        ourSite: "Наш сайт"
       },
       ua: {
         navLauncher: "Лаунчер",
@@ -618,10 +669,14 @@
         interfaceSection: "Інтерфейс",
         screenshotsTitle: "Скріншоти",
         screenshotsText: "Скріншоти інтерфейсу X-WW Launcher.",
+        shotMainLabel: "Головне вікно лаунчера",
+        shotDownloadLabel: "Завантаження збірки",
+        shotSettingsLabel: "Налаштування",
         latestRelease: "Остання версія",
         downloadTitle: "Завантажити X-WW Launcher",
         downloadText: "Завантаж лаунчер, запусти його та вибери збірку. Усі необхідні ігрові файли будуть підготовлені автоматично.",
-        downloadLatest: "↓ Завантажити останню версію"
+        downloadLatest: "↓ Завантажити останню версію",
+        ourSite: "Наш сайт"
       },
       en: {
         navLauncher: "Launcher",
@@ -642,15 +697,16 @@
         interfaceSection: "Interface",
         screenshotsTitle: "Screenshots",
         screenshotsText: "Screenshots of the X-WW Launcher interface.",
+        shotMainLabel: "Launcher home",
+        shotDownloadLabel: "Modpack download",
+        shotSettingsLabel: "Settings",
         latestRelease: "Latest version",
         downloadTitle: "Download X-WW Launcher",
         downloadText: "Download the launcher, start it and select a modpack. All required game files will be prepared automatically.",
-        downloadLatest: "↓ Download latest version"
+        downloadLatest: "↓ Download latest version",
+        ourSite: "Our website"
       }
     };
-
-    const releaseApi = `https://api.github.com/repos/${GITHUB.owner}/${GITHUB.repo}/releases/latest`;
-    const releasesPage = `https://github.com/${GITHUB.owner}/${GITHUB.repo}/releases`;
     const downloadButton = document.getElementById("downloadButton");
 function updateScreenshots(lang) {
       document.querySelectorAll(".lang-shot").forEach(img => {
@@ -692,6 +748,12 @@ function updateScreenshots(lang) {
       });
 
       updateScreenshots(lang);
+
+      document.querySelectorAll("[data-shot-path]").forEach(el => {
+        const shot = el.dataset.shotPath;
+        el.textContent = `assets/images/${shot}-${lang}.png`;
+      });
+
       localStorage.setItem("xww-language", lang);
     }
 
@@ -699,31 +761,8 @@ function updateScreenshots(lang) {
       btn.addEventListener("click", () => setLanguage(btn.dataset.lang));
     });
 
-    async function loadLatestRelease() {
-      try {
-        const response = await fetch(releaseApi, {
-          headers: { "Accept": "application/vnd.github+json" }
-        });
-
-        if (!response.ok) throw new Error(`GitHub API: ${response.status}`);
-
-        const release = await response.json();
-
-        const assets = Array.isArray(release.assets) ? release.assets : [];
-        const preferredAsset =
-          assets.find(a => /\.exe$/i.test(a.name)) ||
-          assets.find(a => /\.msi$/i.test(a.name)) ||
-          assets.find(a => /\.zip$/i.test(a.name)) ||
-          assets[0];
-
-        downloadButton.href =
-          preferredAsset?.browser_download_url ||
-          release.html_url ||
-          releasesPage;
-      } catch (error) {
-        console.warn("Failed to load latest GitHub release:", error);
-        downloadButton.href = releasesPage;
-      }
+    function setupDownload() {
+      downloadButton.href = "https://github.com/monkey52x/minecraft.x-ww/releases/download/launcher/launcher-windows-x64.exe";
     }
 
     const savedLanguage = localStorage.getItem("xww-language");
@@ -738,7 +777,7 @@ function updateScreenshots(lang) {
 
     document.getElementById("year").textContent = new Date().getFullYear();
     setLanguage(initialLanguage);
-    loadLatestRelease();
+    setupDownload();
   </script>
 </body>
 </html>
