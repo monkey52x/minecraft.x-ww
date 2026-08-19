@@ -1,0 +1,744 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#0a0015">
+  <title>X-WW Launcher</title>
+  <link rel="icon" type="image/png" href="assets/images/favicon.png">
+  <style>
+    :root {
+      --bg-primary: #0a0015;
+      --bg-secondary: #1a0533;
+      --bg-card: rgba(255,255,255,.05);
+      --bg-card-hover: rgba(255,255,255,.08);
+      --border-glass: rgba(255,255,255,.10);
+      --border-hover: rgba(167,139,250,.32);
+      --purple-400: #a78bfa;
+      --purple-500: #7c3aed;
+      --purple-600: #6d28d9;
+      --pink-500: #ec4899;
+      --white: rgba(255,255,255,.92);
+      --white-dim: rgba(255,255,255,.62);
+      --white-muted: rgba(255,255,255,.40);
+      --radius: 16px;
+      --radius-sm: 10px;
+      --shadow-glass: 0 8px 32px rgba(0,0,0,.30);
+      --shadow-glow: 0 0 28px rgba(124,58,237,.25);
+      --font-main: "Segoe UI", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      min-height: 100vh;
+      overflow-x: hidden;
+      font-family: var(--font-main);
+      color: var(--white);
+      background:
+        radial-gradient(circle at 15% 5%, rgba(124,58,237,.16), transparent 30rem),
+        radial-gradient(circle at 90% 35%, rgba(236,72,153,.08), transparent 32rem),
+        var(--bg-primary);
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      z-index: -1;
+      pointer-events: none;
+      background-image:
+        linear-gradient(rgba(255,255,255,.018) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.018) 1px, transparent 1px);
+      background-size: 42px 42px;
+      mask-image: linear-gradient(to bottom, black, transparent 80%);
+    }
+
+    a { color: inherit; text-decoration: none; }
+    button { font: inherit; }
+    img { max-width: 100%; display: block; }
+
+    .container { width: min(1120px, calc(100% - 32px)); margin: 0 auto; }
+
+    .nav {
+      position: sticky;
+      top: 14px;
+      z-index: 50;
+      width: min(1120px, calc(100% - 32px));
+      margin: 14px auto 0;
+      padding: 10px 12px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+      border: 1px solid var(--border-glass);
+      border-radius: 18px;
+      background: rgba(10,0,21,.70);
+      backdrop-filter: blur(18px);
+      box-shadow: var(--shadow-glass);
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 800;
+      letter-spacing: .03em;
+    }
+
+    .brand-mark {
+      width: 34px;
+      height: 34px;
+      border-radius: 10px;
+      display: grid;
+      place-items: center;
+      font-weight: 900;
+      overflow: hidden;
+      background: #17131f;
+      box-shadow: 0 0 20px rgba(124,58,237,.35);
+    }
+    .brand-mark img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .nav-links { display: flex; gap: 4px; flex-wrap: wrap; justify-content: flex-end; }
+    .nav-links a {
+      padding: 8px 12px;
+      border-radius: 9px;
+      color: var(--white-dim);
+      font-size: 14px;
+      transition: .2s ease;
+    }
+    .nav-links a:hover { color: var(--white); background: rgba(255,255,255,.06); }
+
+    .hero {
+      min-height: 690px;
+      padding: 104px 0 72px;
+      display: grid;
+      grid-template-columns: 1fr 1.08fr;
+      align-items: center;
+      gap: 54px;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 18px;
+      padding: 7px 11px;
+      border: 1px solid rgba(167,139,250,.2);
+      border-radius: 999px;
+      color: var(--purple-400);
+      background: rgba(124,58,237,.08);
+      font-size: 13px;
+    }
+    .dot {
+      width: 7px; height: 7px; border-radius: 50%;
+      background: #70e39d;
+      box-shadow: 0 0 12px rgba(112,227,157,.75);
+    }
+
+    h1 {
+      max-width: 700px;
+      font-size: clamp(46px, 7vw, 78px);
+      line-height: .98;
+      letter-spacing: -.055em;
+    }
+    h1 span {
+      background: linear-gradient(100deg, #fff 15%, var(--purple-400) 62%, #c29cff);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .hero-text {
+      max-width: 570px;
+      margin-top: 22px;
+      color: var(--white-dim);
+      font-size: 17px;
+      line-height: 1.7;
+    }
+
+    .actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 30px; }
+
+    .btn {
+      min-height: 46px;
+      padding: 0 17px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 9px;
+      border: 1px solid var(--border-glass);
+      border-radius: 11px;
+      cursor: pointer;
+      transition: .2s ease;
+      color: var(--white);
+      background: rgba(255,255,255,.055);
+    }
+    .btn:hover { transform: translateY(-2px); border-color: var(--border-hover); background: rgba(255,255,255,.08); }
+    .btn.primary {
+      border-color: rgba(167,139,250,.36);
+      background: linear-gradient(135deg, var(--purple-600), var(--purple-500));
+      box-shadow: var(--shadow-glow);
+      font-weight: 650;
+    }
+
+    .window {
+      position: relative;
+      border: 1px solid rgba(255,255,255,.12);
+      border-radius: 18px;
+      overflow: hidden;
+      background: #100d16;
+      box-shadow: 0 32px 85px rgba(0,0,0,.48), 0 0 55px rgba(124,58,237,.13);
+      transform: perspective(1300px) rotateY(-3deg) rotateX(1deg);
+    }
+
+    .hero-shot-window {
+      aspect-ratio: 16 / 10;
+    }
+
+    .hero-shot-window > img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .hero-shot-window.has-image .hero-shot-placeholder {
+      display: none;
+    }
+
+    .hero-shot-placeholder {
+      position: absolute;
+      inset: 0;
+      display: grid;
+      place-items: center;
+      text-align: center;
+      color: var(--white-dim);
+      background: linear-gradient(145deg, #17131f, #100d16);
+    }
+
+    .hero-shot-placeholder b {
+      display: block;
+      font-size: 20px;
+    }
+
+    .hero-shot-placeholder span {
+      display: block;
+      margin-top: 7px;
+      color: var(--white-muted);
+      font-size: 12px;
+    }
+    .window::after {
+      content:"";
+      position:absolute;
+      inset:0;
+      pointer-events:none;
+      box-shadow: inset 0 1px 0 rgba(255,255,255,.06);
+    }
+    .window-top {
+      height: 42px;
+      padding: 0 14px;
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      background: rgba(255,255,255,.035);
+      border-bottom: 1px solid rgba(255,255,255,.06);
+    }
+    .win-dot { width: 9px; height: 9px; border-radius: 50%; background: rgba(255,255,255,.15); }
+    .window-title { margin-left: 7px; font-size: 11px; color: var(--white-muted); }
+
+    .launcher-mock {
+      aspect-ratio: 16/10;
+      padding: 16px;
+      display: grid;
+      grid-template-columns: 58px 1fr;
+      gap: 14px;
+      background:
+        radial-gradient(circle at 76% 30%, rgba(167,123,243,.16), transparent 45%),
+        #100d16;
+    }
+    .mock-side {
+      padding: 8px 7px;
+      border: 1px solid #322a41;
+      border-radius: 12px;
+      background: #17131f;
+    }
+    .mock-logo {
+      height: 40px;
+      display: grid;
+      place-items: center;
+      margin-bottom: 12px;
+      border-radius: 10px;
+      color: #fff;
+      font-size: 13px;
+      font-weight: 800;
+      background: #251e31;
+    }
+    .mock-nav {
+      height: 34px; margin-top: 7px; border-radius: 9px; background: #1b1624;
+    }
+    .mock-nav.active { outline: 1px solid #403451; background: #251e31; }
+    .mock-main { display: flex; flex-direction: column; gap: 12px; min-width: 0; }
+    .mock-banner {
+      position: relative;
+      flex: 1;
+      min-height: 170px;
+      overflow: hidden;
+      border: 1px solid #342b45;
+      border-radius: 14px;
+      background:
+        linear-gradient(90deg, rgba(16,13,22,.96) 5%, rgba(16,13,22,.42) 65%, rgba(16,13,22,.18)),
+        radial-gradient(circle at 80% 35%, #3b275f 0, #21172f 35%, #17131f 68%);
+    }
+    .mock-copy { position:absolute; left:20px; bottom:20px; }
+    .mock-copy b { display:block; margin-bottom:5px; font-size:23px; letter-spacing:-.03em; }
+    .mock-copy span { color: rgba(255,255,255,.48); font-size:10px; }
+    .mock-play {
+      position:absolute; right:18px; bottom:18px;
+      min-width: 100px; padding:10px 14px; text-align:center; border-radius:10px;
+      background:#a77bf3; color:#130d19; font-size:11px; font-weight:800;
+    }
+    .mock-bottom { height: 72px; display:grid; grid-template-columns: 1fr 1fr 1fr; gap:10px; }
+    .mock-card { border:1px solid #322a41; border-radius:11px; background:#1b1624; }
+
+    section { padding: 82px 0; scroll-margin-top: 90px; }
+    .section-head { max-width: 660px; margin-bottom: 30px; }
+    .section-head small { color: var(--purple-400); font-weight: 650; }
+    h2 { margin-top: 6px; font-size: clamp(30px, 4vw, 45px); letter-spacing: -.035em; }
+    .section-head p { margin-top: 11px; color: var(--white-dim); line-height: 1.7; }
+
+    .feature-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; }
+    .card {
+      padding: 22px;
+      border: 1px solid var(--border-glass);
+      border-radius: var(--radius);
+      background: var(--bg-card);
+      backdrop-filter: blur(16px);
+      box-shadow: var(--shadow-glass);
+      transition: .2s ease;
+    }
+    .card:hover { transform: translateY(-3px); border-color: var(--border-hover); background: var(--bg-card-hover); }
+    .icon {
+      width: 40px; height: 40px; margin-bottom: 22px;
+      display: grid; place-items: center;
+      border: 1px solid rgba(167,139,250,.18);
+      border-radius: 11px;
+      color: var(--purple-400);
+      background: rgba(124,58,237,.08);
+    }
+    .card h3 { margin-bottom: 8px; font-size: 18px; }
+    .card p { color: var(--white-dim); font-size: 14px; line-height: 1.65; }
+
+    .shots { display: grid; grid-template-columns: 1.3fr .7fr; gap: 14px; }
+    .shot {
+      position: relative;
+      min-height: 260px;
+      overflow: hidden;
+      border: 1px solid var(--border-glass);
+      border-radius: var(--radius);
+      background: linear-gradient(145deg, #17131f, #100d16);
+      box-shadow: var(--shadow-glass);
+    }
+    .shot.large { min-height: 470px; grid-row: span 2; }
+    .shot img { width:100%; height:100%; object-fit:cover; }
+    .shot.has-image .shot-placeholder { display:none; }
+    .shot-placeholder { position:absolute; inset:0; display:grid; place-items:center; padding:28px; text-align:center; }
+    .shot-placeholder b { display:block; font-size:18px; }
+    .shot-placeholder span { display:block; margin-top:6px; color:var(--white-muted); font-size:12px; }
+    .shot-number { position:absolute; top:14px; left:14px; color:var(--white-muted); font-size:11px; }
+
+    .download-box {
+      padding: 34px;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 30px;
+      align-items: center;
+      border: 1px solid rgba(167,139,250,.20);
+      border-radius: 22px;
+      background:
+        radial-gradient(circle at 80% 0%, rgba(124,58,237,.14), transparent 24rem),
+        var(--bg-card);
+      box-shadow: var(--shadow-glass);
+    }
+    .download-box p { margin-top: 9px; color: var(--white-dim); line-height: 1.65; }
+    .download-meta { display:flex; flex-wrap:wrap; gap:16px; margin-top:17px; color:var(--white-muted); font-size:12px; }
+
+    footer {
+      padding: 30px 0 42px;
+      color: var(--white-muted);
+      font-size: 12px;
+      border-top: 1px solid rgba(255,255,255,.055);
+    }
+    .footer-inner { display:flex; justify-content:space-between; gap:20px; flex-wrap:wrap; }
+
+
+    .nav-right {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .lang-switcher {
+      display: flex;
+      gap: 3px;
+      padding: 3px;
+      border: 1px solid var(--border-glass);
+      border-radius: 10px;
+      background: rgba(255,255,255,.04);
+    }
+
+    .lang-btn {
+      min-width: 34px;
+      height: 30px;
+      padding: 0 8px;
+      border: 0;
+      border-radius: 7px;
+      cursor: pointer;
+      color: var(--white-muted);
+      background: transparent;
+      font-size: 11px;
+      font-weight: 700;
+      transition: .2s ease;
+    }
+
+    .lang-btn:hover {
+      color: var(--white);
+      background: rgba(255,255,255,.06);
+    }
+
+    .lang-btn.active {
+      color: #fff;
+      background: var(--purple-500);
+      box-shadow: 0 0 14px rgba(124,58,237,.22);
+    }
+
+    @media (max-width: 880px) {
+      .hero { grid-template-columns: 1fr; min-height: auto; padding-top: 84px; }
+      .hero-copy { text-align:center; }
+      .hero-text { margin-left:auto; margin-right:auto; }
+      .actions { justify-content:center; }
+      .window { transform:none; max-width:720px; margin:0 auto; width:100%; }
+      .feature-grid { grid-template-columns: 1fr; }
+      .shots { grid-template-columns: 1fr; }
+      .shot.large { min-height: 330px; grid-row:auto; }
+      .download-box { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 620px) {
+      .nav { top: 8px; padding: 9px 10px; }
+      .nav-links a:not(.download-nav) { display:none; }
+      .container, .nav { width: min(100% - 22px, 1120px); }
+      .hero { padding: 68px 0 52px; gap: 36px; }
+      h1 { font-size: 48px; }
+      .launcher-mock { grid-template-columns: 44px 1fr; gap: 9px; padding: 10px; }
+      .mock-bottom { height: 58px; }
+      section { padding: 58px 0; }
+      .download-box { padding: 24px; }
+    }
+  </style>
+</head>
+<body>
+  <nav class="nav">
+    <a href="#home" class="brand">
+      <span class="brand-mark"><img src="assets/images/logo.png" alt="X-WW"></span>
+      <span>X-WW Launcher</span>
+    </a>
+
+    <div class="nav-right">
+      <div class="nav-links">
+        <a href="#about" data-i18n="navLauncher">Лаунчер</a>
+        <a href="#screenshots" data-i18n="navScreenshots">Скриншоты</a>
+        <a href="#download" class="download-nav" data-i18n="navDownload">Скачать</a>
+      </div>
+
+      <div class="lang-switcher" aria-label="Language">
+        <button class="lang-btn active" type="button" data-lang="ru">RU</button>
+        <button class="lang-btn" type="button" data-lang="ua">UA</button>
+        <button class="lang-btn" type="button" data-lang="en">EN</button>
+      </div>
+    </div>
+  </nav>
+
+  <main>
+    <section class="hero container" id="home">
+      <div class="hero-copy">
+        <div class="eyebrow"><span class="dot"></span> <span data-i18n="available">Лаунчер доступен для Windows</span></div>
+        <h1><span data-i18n-html="heroTitle">Один лаунчер.<br><span>Просто играй.</span></span></h1>
+        <p class="hero-text">
+          <span data-i18n="heroText">X-WW Launcher — простой способ скачать, обновить и запустить нужную сборку Minecraft без ручной установки файлов.</span>
+        </p>
+        <div class="actions">
+          <a class="btn primary" id="heroDownload" href="#download"><span data-i18n="downloadLauncher">↓ Скачать лаунчер</span></a>
+          <a class="btn" href="#screenshots"><span data-i18n="viewInterface">Посмотреть интерфейс</span></a>
+        </div>
+      </div>
+
+      <div class="window hero-shot-window" aria-label="Предпросмотр X-WW Launcher">
+        <img
+          class="lang-shot hero-lang-shot"
+          data-shot="launcher-hero"
+          src="assets/images/launcher-hero-ru.png"
+          alt="X-WW Launcher"
+        >
+        <div class="shot-placeholder hero-shot-placeholder">
+          <div>
+            <b>X-WW Launcher</b>
+            <span>assets/images/launcher-hero-ru.png</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="about">
+      <div class="container">
+        <div class="section-head">
+          <small data-i18n="launcherSection">Лаунчер</small>
+          <h2 data-i18n="minimalTitle">Минимум лишнего</h2>
+          <p data-i18n="minimalText">Сайт и сам лаунчер сделаны вокруг одной идеи: пользователю не нужно разбираться, какие файлы куда устанавливать.</p>
+        </div>
+
+        <div class="feature-grid">
+          <article class="card">
+            <div class="icon">↻</div>
+            <h3 data-i18n="autoUpdateTitle">Автообновление</h3>
+            <p data-i18n="autoUpdateText">Лаунчер сам проверяет актуальность файлов сборки и обновляет только то, что действительно изменилось.</p>
+          </article>
+          <article class="card">
+            <div class="icon">▶</div>
+            <h3 data-i18n="oneLaunchTitle">Один запуск</h3>
+            <p data-i18n="oneLaunchText">Установка, проверка и запуск находятся в одном интерфейсе. Без ручной настройки модов и ресурсов.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="screenshots">
+      <div class="container">
+        <div class="section-head">
+          <small data-i18n="interfaceSection">Интерфейс</small>
+          <h2 data-i18n="screenshotsTitle">Скриншоты</h2>
+          <p data-i18n="screenshotsText">Скриншоты интерфейса X-WW Launcher.</p>
+        </div>
+
+        <div class="shots">
+          <div class="shot large">
+            <span class="shot-number">01</span>
+            <img class="lang-shot" data-shot="launcher-main" src="assets/images/launcher-main-ru.png" alt="X-WW Launcher">
+            <div class="shot-placeholder">
+              <div><b>Главное окно лаунчера</b><span>assets/images/launcher-main.png</span></div>
+            </div>
+          </div>
+
+          <div class="shot">
+            <span class="shot-number">02</span>
+            <img class="lang-shot" data-shot="launcher-download" src="assets/images/launcher-download-ru.png" alt="X-WW Launcher">
+            <div class="shot-placeholder">
+              <div><b>Загрузка сборки</b><span>assets/images/launcher-download.png</span></div>
+            </div>
+          </div>
+
+          <div class="shot">
+            <span class="shot-number">03</span>
+            <img class="lang-shot" data-shot="launcher-settings" src="assets/images/launcher-settings-ru.png" alt="X-WW Launcher">
+            <div class="shot-placeholder">
+              <div><b>Настройки</b><span>assets/images/launcher-settings.png</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="download">
+      <div class="container">
+        <div class="download-box">
+          <div>
+            <div class="eyebrow" style="margin-bottom:12px" data-i18n="latestRelease">Последняя версия</div>
+            <h2 style="margin-top:0" data-i18n="downloadTitle">Скачать X-WW Launcher</h2>
+            <p data-i18n="downloadText">Скачай лаунчер, запусти его и выбери сборку. Все необходимые игровые файлы будут подготовлены автоматически.</p>
+          </div>
+          <a class="btn primary" id="downloadButton" href="https://github.com/monkey52x/x-ww/releases"><span data-i18n="downloadLatest">↓ Скачать последнюю версию</span></a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-inner">
+      <span>© <span id="year"></span> X-WW</span>
+      <span>Launcher · Minecraft · X-WW</span>
+    </div>
+  </footer>
+
+  <script>
+    const GITHUB = { owner: "monkey52x", repo: "x-ww" };
+
+    const translations = {
+      ru: {
+        navLauncher: "Лаунчер",
+        navScreenshots: "Скриншоты",
+        navDownload: "Скачать",
+        available: "Лаунчер доступен для Windows",
+        heroTitle: 'Один лаунчер.<br><span>Просто играй.</span>',
+        heroText: "X-WW Launcher — простой способ скачать, обновить и запустить нужную сборку Minecraft без ручной установки файлов.",
+        downloadLauncher: "↓ Скачать лаунчер",
+        viewInterface: "Посмотреть интерфейс",
+        launcherSection: "Лаунчер",
+        minimalTitle: "Минимум лишнего",
+        minimalText: "Сайт и сам лаунчер сделаны вокруг одной идеи: пользователю не нужно разбираться, какие файлы куда устанавливать.",
+        autoUpdateTitle: "Автообновление",
+        autoUpdateText: "Лаунчер сам проверяет актуальность файлов сборки и обновляет только то, что действительно изменилось.",
+        oneLaunchTitle: "Один запуск",
+        oneLaunchText: "Установка, проверка и запуск находятся в одном интерфейсе. Без ручной настройки модов и ресурсов.",
+        interfaceSection: "Интерфейс",
+        screenshotsTitle: "Скриншоты",
+        screenshotsText: "Скриншоты интерфейса X-WW Launcher.",
+        latestRelease: "Последняя версия",
+        downloadTitle: "Скачать X-WW Launcher",
+        downloadText: "Скачай лаунчер, запусти его и выбери сборку. Все необходимые игровые файлы будут подготовлены автоматически.",
+        downloadLatest: "↓ Скачать последнюю версию"
+      },
+      ua: {
+        navLauncher: "Лаунчер",
+        navScreenshots: "Скріншоти",
+        navDownload: "Завантажити",
+        available: "Лаунчер доступний для Windows",
+        heroTitle: 'Один лаунчер.<br><span>Просто грай.</span>',
+        heroText: "X-WW Launcher — простий спосіб завантажити, оновити та запустити потрібну збірку Minecraft без ручного встановлення файлів.",
+        downloadLauncher: "↓ Завантажити лаунчер",
+        viewInterface: "Переглянути інтерфейс",
+        launcherSection: "Лаунчер",
+        minimalTitle: "Мінімум зайвого",
+        minimalText: "Сайт і сам лаунчер створені навколо однієї ідеї: користувачеві не потрібно розбиратися, які файли куди встановлювати.",
+        autoUpdateTitle: "Автооновлення",
+        autoUpdateText: "Лаунчер сам перевіряє актуальність файлів збірки та оновлює лише те, що справді змінилося.",
+        oneLaunchTitle: "Один запуск",
+        oneLaunchText: "Встановлення, перевірка та запуск знаходяться в одному інтерфейсі. Без ручного налаштування модів і ресурсів.",
+        interfaceSection: "Інтерфейс",
+        screenshotsTitle: "Скріншоти",
+        screenshotsText: "Скріншоти інтерфейсу X-WW Launcher.",
+        latestRelease: "Остання версія",
+        downloadTitle: "Завантажити X-WW Launcher",
+        downloadText: "Завантаж лаунчер, запусти його та вибери збірку. Усі необхідні ігрові файли будуть підготовлені автоматично.",
+        downloadLatest: "↓ Завантажити останню версію"
+      },
+      en: {
+        navLauncher: "Launcher",
+        navScreenshots: "Screenshots",
+        navDownload: "Download",
+        available: "Launcher available for Windows",
+        heroTitle: 'One launcher.<br><span>Just play.</span>',
+        heroText: "X-WW Launcher is a simple way to download, update and launch the required Minecraft modpack without installing files manually.",
+        downloadLauncher: "↓ Download launcher",
+        viewInterface: "View interface",
+        launcherSection: "Launcher",
+        minimalTitle: "Nothing unnecessary",
+        minimalText: "The website and launcher are built around one idea: you should not need to figure out which files go where.",
+        autoUpdateTitle: "Auto update",
+        autoUpdateText: "The launcher checks the modpack files and updates only what has actually changed.",
+        oneLaunchTitle: "One launch",
+        oneLaunchText: "Installation, verification and launch are all handled in one interface. No manual mod or resource setup.",
+        interfaceSection: "Interface",
+        screenshotsTitle: "Screenshots",
+        screenshotsText: "Screenshots of the X-WW Launcher interface.",
+        latestRelease: "Latest version",
+        downloadTitle: "Download X-WW Launcher",
+        downloadText: "Download the launcher, start it and select a modpack. All required game files will be prepared automatically.",
+        downloadLatest: "↓ Download latest version"
+      }
+    };
+
+    const releaseApi = `https://api.github.com/repos/${GITHUB.owner}/${GITHUB.repo}/releases/latest`;
+    const releasesPage = `https://github.com/${GITHUB.owner}/${GITHUB.repo}/releases`;
+    const downloadButton = document.getElementById("downloadButton");
+function updateScreenshots(lang) {
+      document.querySelectorAll(".lang-shot").forEach(img => {
+        const shot = img.dataset.shot;
+        const parent = img.closest(".shot, .window");
+
+        if (parent) parent.classList.remove("has-image");
+        img.onload = () => {
+          if (parent) parent.classList.add("has-image");
+        };
+        img.onerror = () => {
+          if (parent) parent.classList.remove("has-image");
+        };
+        img.src = `assets/images/${shot}-${lang}.png`;
+      });
+    }
+
+    function setLanguage(lang) {
+      if (!translations[lang]) lang = "ru";
+
+      document.documentElement.lang = lang === "ua" ? "uk" : lang;
+
+      document.querySelectorAll("[data-i18n]").forEach(el => {
+        const key = el.dataset.i18n;
+        if (translations[lang][key] !== undefined) {
+          el.textContent = translations[lang][key];
+        }
+      });
+
+      document.querySelectorAll("[data-i18n-html]").forEach(el => {
+        const key = el.dataset.i18nHtml;
+        if (translations[lang][key] !== undefined) {
+          el.innerHTML = translations[lang][key];
+        }
+      });
+
+      document.querySelectorAll(".lang-btn").forEach(btn => {
+        btn.classList.toggle("active", btn.dataset.lang === lang);
+      });
+
+      updateScreenshots(lang);
+      localStorage.setItem("xww-language", lang);
+    }
+
+    document.querySelectorAll(".lang-btn").forEach(btn => {
+      btn.addEventListener("click", () => setLanguage(btn.dataset.lang));
+    });
+
+    async function loadLatestRelease() {
+      try {
+        const response = await fetch(releaseApi, {
+          headers: { "Accept": "application/vnd.github+json" }
+        });
+
+        if (!response.ok) throw new Error(`GitHub API: ${response.status}`);
+
+        const release = await response.json();
+
+        const assets = Array.isArray(release.assets) ? release.assets : [];
+        const preferredAsset =
+          assets.find(a => /\.exe$/i.test(a.name)) ||
+          assets.find(a => /\.msi$/i.test(a.name)) ||
+          assets.find(a => /\.zip$/i.test(a.name)) ||
+          assets[0];
+
+        downloadButton.href =
+          preferredAsset?.browser_download_url ||
+          release.html_url ||
+          releasesPage;
+      } catch (error) {
+        console.warn("Failed to load latest GitHub release:", error);
+        downloadButton.href = releasesPage;
+      }
+    }
+
+    const savedLanguage = localStorage.getItem("xww-language");
+    const browserLanguage = navigator.language.toLowerCase();
+
+    let initialLanguage = savedLanguage;
+    if (!initialLanguage) {
+      if (browserLanguage.startsWith("uk")) initialLanguage = "ua";
+      else if (browserLanguage.startsWith("ru")) initialLanguage = "ru";
+      else initialLanguage = "en";
+    }
+
+    document.getElementById("year").textContent = new Date().getFullYear();
+    setLanguage(initialLanguage);
+    loadLatestRelease();
+  </script>
+</body>
+</html>
