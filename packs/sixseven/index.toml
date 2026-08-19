@@ -1,16 +1,2 @@
 hash-format = "sha256"
-
-[[files]]
-file = "mods/cloth-config.pw.toml"
-hash = "75181b55e0407d1fca1e2f346c6501f919f5109545990ddfb66db9cd1b771f8a"
-metafile = true
-
-[[files]]
-file = "mods/iris.pw.toml"
-hash = "db1c1e6382878b78e994dba1b9026935f8d1c5ca685c89d2437858e0a0dcab58"
-metafile = true
-
-[[files]]
-file = "mods/sodium.pw.toml"
-hash = "8b237735f64f339d35d40eaceb76cdf137fd05a49b452d2a8c3434cada762e11"
-metafile = true
+files = []

@@ -1,21 +1,5 @@
 {
   "schema_version": 1,
-  "toggles": {
-    "test": {
-      "name": "test1",
-      "default": false,
-      "mods": [
-        "sodium"
-      ]
-    }
-  },
-  "profiles": {
-    "test2": {
-      "name": "test2",
-      "disable_mods": [
-        "iris"
-      ],
-      "disable_resourcepacks": []
-    }
-  }
+  "toggles": {},
+  "profiles": {}
 }

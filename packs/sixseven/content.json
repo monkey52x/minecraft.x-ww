@@ -1,6 +1,6 @@
 {
   "schema_version": 2,
-  "version": "1.0.3",
+  "version": "1.0.4",
   "files": [
     {
       "path": "options.txt",
@@ -11,8 +11,8 @@
     },
     {
       "path": "x-ww/changelog.json",
-      "sha256": "5a6e19764cfc2eff1dbcb6d877c58bbf43fbb8f0f063cd952ceda73d145653a9",
-      "size": 510,
+      "sha256": "9d528fcfe3ef5e955c2f9eb655e2cc217ee04b9dbd4fedf4f94696775ca2918d",
+      "size": 293,
       "strategy": "replace",
       "format": null
     },
@@ -25,8 +25,8 @@
     },
     {
       "path": "x-ww/presets.json",
-      "sha256": "86f1f25c7db0b0460c411ac56d16baa16ec95b40e1e4bfa9c9723a460483e4ea",
-      "size": 301,
+      "sha256": "e4a83414a2c73bdbd9bf65f38d0719a08a130d5fd91515fa2524328279a9509d",
+      "size": 61,
       "strategy": "replace",
       "format": null
     }
