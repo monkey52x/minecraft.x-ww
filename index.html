@@ -389,10 +389,13 @@
       width: 100%;
       aspect-ratio: 16 / 9;
       overflow: hidden;
-      border: 0;
+      border-top: 1px solid var(--border-glass);
+      border-right: 0;
+      border-bottom: 1px solid var(--border-glass);
+      border-left: 0;
       border-radius: var(--radius);
-      background: transparent;
-      box-shadow: none;
+      background: #100d16;
+      box-shadow: var(--shadow-glass);
       cursor: zoom-in;
       user-select: none;
     }
@@ -402,7 +405,7 @@
       height: 100%;
       display: block;
       object-fit: contain;
-      background: transparent;
+      background: #100d16;
     }
 
     .viewer-counter {
