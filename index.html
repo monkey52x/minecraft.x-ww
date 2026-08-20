@@ -119,7 +119,7 @@
       min-height: 690px;
       padding: 104px 0 72px;
       display: grid;
-      grid-template-columns: 1fr 1.08fr;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1.08fr);
       align-items: center;
       gap: 54px;
     }
@@ -211,8 +211,16 @@
       transform: perspective(1300px) rotateY(-3deg) rotateX(1deg);
     }
 
+    .hero-copy {
+      min-width: 0;
+    }
+
     .hero-shot-window {
-      aspect-ratio: 16 / 10;
+      width: 100%;
+      max-width: 560px;
+      height: 350px;
+      justify-self: end;
+      flex: 0 0 auto;
     }
 
     .hero-shot-window > img {
@@ -365,6 +373,137 @@
     .shot-placeholder span { display:block; margin-top:6px; color:var(--white-muted); font-size:12px; }
     .shot-number { position:absolute; top:14px; left:14px; color:var(--white-muted); font-size:11px; }
 
+
+    .screenshot-viewer {
+      display: grid;
+      grid-template-columns: 48px minmax(0, 1fr) 48px;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .viewer-stage {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      overflow: hidden;
+      border: 1px solid var(--border-glass);
+      border-radius: var(--radius);
+      background: #100d16;
+      box-shadow: var(--shadow-glass);
+      cursor: zoom-in;
+      user-select: none;
+    }
+
+    .viewer-stage img {
+      width: 100%;
+      height: 100%;
+      display: block;
+      object-fit: contain;
+      background: #100d16;
+    }
+
+    .viewer-counter {
+      position: absolute;
+      right: 12px;
+      bottom: 12px;
+      padding: 6px 9px;
+      border: 1px solid var(--border-glass);
+      border-radius: 999px;
+      color: var(--white-dim);
+      background: rgba(10,0,21,.72);
+      backdrop-filter: blur(10px);
+      font-size: 11px;
+    }
+
+    .viewer-arrow {
+      width: 44px;
+      height: 44px;
+      border: 1px solid var(--border-glass);
+      border-radius: 12px;
+      cursor: pointer;
+      color: var(--white);
+      background: rgba(255,255,255,.045);
+      font-size: 30px;
+      line-height: 1;
+      transition: .2s ease;
+    }
+
+    .viewer-arrow:hover {
+      border-color: var(--border-hover);
+      background: rgba(255,255,255,.08);
+      transform: translateY(-1px);
+    }
+
+    .fullscreen-viewer {
+      position: fixed;
+      inset: 0;
+      z-index: 9999;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 28px 76px;
+      background: rgba(4, 0, 10, .94);
+      backdrop-filter: blur(14px);
+    }
+
+    .fullscreen-viewer.open {
+      display: flex;
+    }
+
+    .fullscreen-viewer img {
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: contain;
+      border-radius: 12px;
+      box-shadow: 0 24px 90px rgba(0,0,0,.55);
+    }
+
+    .fullscreen-close,
+    .fullscreen-arrow {
+      position: absolute;
+      border: 1px solid var(--border-glass);
+      cursor: pointer;
+      color: var(--white);
+      background: rgba(255,255,255,.06);
+      backdrop-filter: blur(10px);
+      transition: .2s ease;
+    }
+
+    .fullscreen-close:hover,
+    .fullscreen-arrow:hover {
+      border-color: var(--border-hover);
+      background: rgba(255,255,255,.11);
+    }
+
+    .fullscreen-close {
+      top: 20px;
+      right: 20px;
+      width: 42px;
+      height: 42px;
+      border-radius: 12px;
+      font-size: 24px;
+    }
+
+    .fullscreen-arrow {
+      top: 50%;
+      width: 46px;
+      height: 54px;
+      border-radius: 12px;
+      transform: translateY(-50%);
+      font-size: 32px;
+    }
+
+    .fullscreen-prev { left: 18px; }
+    .fullscreen-next { right: 18px; }
+
+    .btn.disabled {
+      pointer-events: none;
+      opacity: .45;
+      cursor: not-allowed;
+      box-shadow: none;
+      transform: none;
+    }
+
     .download-box {
       padding: 34px;
       display: grid;
@@ -473,10 +612,146 @@
       .hero-text { margin-left:auto; margin-right:auto; }
       .actions { justify-content:center; }
       .window { transform:none; max-width:720px; margin:0 auto; width:100%; }
+      .hero-shot-window { max-width: 560px; height: 350px; justify-self: center; }
       .feature-grid { grid-template-columns: 1fr; }
-      .shots { grid-template-columns: 1fr; }
-      .shot.large { min-height: 330px; grid-row:auto; }
-      .download-box { grid-template-columns: 1fr; }
+      .screenshot-viewer {
+        grid-template-columns: 42px minmax(0, 1fr) 42px;
+        gap: 10px;
+      }
+      .viewer-arrow { width: 40px; height: 40px; }
+      .fullscreen-viewer { padding: 64px 18px 24px; }
+  
+    .screenshot-viewer {
+      display: grid;
+      grid-template-columns: 48px minmax(0, 1fr) 48px;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .viewer-stage {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      overflow: hidden;
+      border: 1px solid var(--border-glass);
+      border-radius: var(--radius);
+      background: #100d16;
+      box-shadow: var(--shadow-glass);
+      cursor: zoom-in;
+      user-select: none;
+    }
+
+    .viewer-stage img {
+      width: 100%;
+      height: 100%;
+      display: block;
+      object-fit: contain;
+      background: #100d16;
+    }
+
+    .viewer-counter {
+      position: absolute;
+      right: 12px;
+      bottom: 12px;
+      padding: 6px 9px;
+      border: 1px solid var(--border-glass);
+      border-radius: 999px;
+      color: var(--white-dim);
+      background: rgba(10,0,21,.72);
+      backdrop-filter: blur(10px);
+      font-size: 11px;
+    }
+
+    .viewer-arrow {
+      width: 44px;
+      height: 44px;
+      border: 1px solid var(--border-glass);
+      border-radius: 12px;
+      cursor: pointer;
+      color: var(--white);
+      background: rgba(255,255,255,.045);
+      font-size: 30px;
+      line-height: 1;
+      transition: .2s ease;
+    }
+
+    .viewer-arrow:hover {
+      border-color: var(--border-hover);
+      background: rgba(255,255,255,.08);
+      transform: translateY(-1px);
+    }
+
+    .fullscreen-viewer {
+      position: fixed;
+      inset: 0;
+      z-index: 9999;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 28px 76px;
+      background: rgba(4, 0, 10, .94);
+      backdrop-filter: blur(14px);
+    }
+
+    .fullscreen-viewer.open {
+      display: flex;
+    }
+
+    .fullscreen-viewer img {
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: contain;
+      border-radius: 12px;
+      box-shadow: 0 24px 90px rgba(0,0,0,.55);
+    }
+
+    .fullscreen-close,
+    .fullscreen-arrow {
+      position: absolute;
+      border: 1px solid var(--border-glass);
+      cursor: pointer;
+      color: var(--white);
+      background: rgba(255,255,255,.06);
+      backdrop-filter: blur(10px);
+      transition: .2s ease;
+    }
+
+    .fullscreen-close:hover,
+    .fullscreen-arrow:hover {
+      border-color: var(--border-hover);
+      background: rgba(255,255,255,.11);
+    }
+
+    .fullscreen-close {
+      top: 20px;
+      right: 20px;
+      width: 42px;
+      height: 42px;
+      border-radius: 12px;
+      font-size: 24px;
+    }
+
+    .fullscreen-arrow {
+      top: 50%;
+      width: 46px;
+      height: 54px;
+      border-radius: 12px;
+      transform: translateY(-50%);
+      font-size: 32px;
+    }
+
+    .fullscreen-prev { left: 18px; }
+    .fullscreen-next { right: 18px; }
+
+    .btn.disabled {
+      pointer-events: none;
+      opacity: .45;
+      cursor: not-allowed;
+      box-shadow: none;
+      transform: none;
+    }
+
+    .download-box { grid-template-columns: 1fr; }
     }
 
     @media (max-width: 620px) {
@@ -484,11 +759,143 @@
       .nav-links a:not(.download-nav) { display:none; }
       .container, .nav { width: min(100% - 22px, 1120px); }
       .hero { padding: 68px 0 52px; gap: 36px; }
+      .hero-shot-window { height: auto; aspect-ratio: 16 / 10; }
       h1 { font-size: 48px; }
       .launcher-mock { grid-template-columns: 44px 1fr; gap: 9px; padding: 10px; }
       .mock-bottom { height: 58px; }
       section { padding: 58px 0; }
-      .download-box { padding: 24px; }
+  
+    .screenshot-viewer {
+      display: grid;
+      grid-template-columns: 48px minmax(0, 1fr) 48px;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .viewer-stage {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      overflow: hidden;
+      border: 1px solid var(--border-glass);
+      border-radius: var(--radius);
+      background: #100d16;
+      box-shadow: var(--shadow-glass);
+      cursor: zoom-in;
+      user-select: none;
+    }
+
+    .viewer-stage img {
+      width: 100%;
+      height: 100%;
+      display: block;
+      object-fit: contain;
+      background: #100d16;
+    }
+
+    .viewer-counter {
+      position: absolute;
+      right: 12px;
+      bottom: 12px;
+      padding: 6px 9px;
+      border: 1px solid var(--border-glass);
+      border-radius: 999px;
+      color: var(--white-dim);
+      background: rgba(10,0,21,.72);
+      backdrop-filter: blur(10px);
+      font-size: 11px;
+    }
+
+    .viewer-arrow {
+      width: 44px;
+      height: 44px;
+      border: 1px solid var(--border-glass);
+      border-radius: 12px;
+      cursor: pointer;
+      color: var(--white);
+      background: rgba(255,255,255,.045);
+      font-size: 30px;
+      line-height: 1;
+      transition: .2s ease;
+    }
+
+    .viewer-arrow:hover {
+      border-color: var(--border-hover);
+      background: rgba(255,255,255,.08);
+      transform: translateY(-1px);
+    }
+
+    .fullscreen-viewer {
+      position: fixed;
+      inset: 0;
+      z-index: 9999;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 28px 76px;
+      background: rgba(4, 0, 10, .94);
+      backdrop-filter: blur(14px);
+    }
+
+    .fullscreen-viewer.open {
+      display: flex;
+    }
+
+    .fullscreen-viewer img {
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: contain;
+      border-radius: 12px;
+      box-shadow: 0 24px 90px rgba(0,0,0,.55);
+    }
+
+    .fullscreen-close,
+    .fullscreen-arrow {
+      position: absolute;
+      border: 1px solid var(--border-glass);
+      cursor: pointer;
+      color: var(--white);
+      background: rgba(255,255,255,.06);
+      backdrop-filter: blur(10px);
+      transition: .2s ease;
+    }
+
+    .fullscreen-close:hover,
+    .fullscreen-arrow:hover {
+      border-color: var(--border-hover);
+      background: rgba(255,255,255,.11);
+    }
+
+    .fullscreen-close {
+      top: 20px;
+      right: 20px;
+      width: 42px;
+      height: 42px;
+      border-radius: 12px;
+      font-size: 24px;
+    }
+
+    .fullscreen-arrow {
+      top: 50%;
+      width: 46px;
+      height: 54px;
+      border-radius: 12px;
+      transform: translateY(-50%);
+      font-size: 32px;
+    }
+
+    .fullscreen-prev { left: 18px; }
+    .fullscreen-next { right: 18px; }
+
+    .btn.disabled {
+      pointer-events: none;
+      opacity: .45;
+      cursor: not-allowed;
+      box-shadow: none;
+      transform: none;
+    }
+
+    .download-box { padding: 24px; }
     }
   </style>
 </head>
@@ -523,7 +930,7 @@
           <span data-i18n="heroText">X-WW Launcher — простой способ скачать, обновить и запустить нужную сборку Minecraft без ручной установки файлов.</span>
         </p>
         <div class="actions">
-          <a class="btn primary" id="heroDownload" href="#download"><span data-i18n="downloadLauncher">↓ Скачать лаунчер</span></a>
+          <a class="btn primary disabled" id="heroDownload" aria-disabled="true" tabindex="-1"><span data-i18n="downloadLauncher">↓ Скачать лаунчер</span></a>
           <a class="btn" href="#screenshots"><span data-i18n="viewInterface">Посмотреть интерфейс</span></a>
         </div>
       </div>
@@ -575,30 +982,20 @@
           <p data-i18n="screenshotsText">Скриншоты интерфейса X-WW Launcher.</p>
         </div>
 
-        <div class="shots">
-          <div class="shot large">
-            <span class="shot-number">01</span>
-            <img class="lang-shot" data-shot="launcher-main" src="assets/images/ru/launcher-main-ru.png" alt="X-WW Launcher">
-            <div class="shot-placeholder">
-              <div><b data-i18n="shotMainLabel">Главное окно лаунчера</b><span data-shot-path="launcher-main">assets/images/ru/launcher-main-ru.png</span></div>
-            </div>
+        <div class="screenshot-viewer">
+          <button class="viewer-arrow viewer-prev" type="button" aria-label="Предыдущий скриншот">‹</button>
+
+          <div class="viewer-stage" id="viewerStage">
+            <img
+              id="viewerImage"
+              src="assets/images/ru/launcher-main-ru.png"
+              alt="X-WW Launcher"
+              draggable="false"
+            >
+            <div class="viewer-counter" id="viewerCounter">1 / 3</div>
           </div>
 
-          <div class="shot">
-            <span class="shot-number">02</span>
-            <img class="lang-shot" data-shot="launcher-download" src="assets/images/ru/launcher-download-ru.png" alt="X-WW Launcher">
-            <div class="shot-placeholder">
-              <div><b data-i18n="shotDownloadLabel">Загрузка сборки</b><span data-shot-path="launcher-download">assets/images/ru/launcher-download-ru.png</span></div>
-            </div>
-          </div>
-
-          <div class="shot">
-            <span class="shot-number">03</span>
-            <img class="lang-shot" data-shot="launcher-settings" src="assets/images/ru/launcher-settings-ru.png" alt="X-WW Launcher">
-            <div class="shot-placeholder">
-              <div><b data-i18n="shotSettingsLabel">Настройки</b><span data-shot-path="launcher-settings">assets/images/ru/launcher-settings-ru.png</span></div>
-            </div>
-          </div>
+          <button class="viewer-arrow viewer-next" type="button" aria-label="Следующий скриншот">›</button>
         </div>
       </div>
     </section>
@@ -611,11 +1008,19 @@
             <h2 style="margin-top:0" data-i18n="downloadTitle">Скачать X-WW Launcher</h2>
             <p data-i18n="downloadText">Скачай лаунчер, запусти его и выбери сборку. Все необходимые игровые файлы будут подготовлены автоматически.</p>
           </div>
-          <a class="btn primary" id="downloadButton" href="https://github.com/monkey52x/minecraft.x-ww/releases/download/launcher/launcher-windows-x64.exe"><span data-i18n="downloadLatest">↓ Скачать последнюю версию</span></a>
+          <a class="btn primary disabled" id="downloadButton" aria-disabled="true" tabindex="-1"><span data-i18n="downloadLatest">↓ Скачать последнюю версию</span></a>
         </div>
       </div>
     </section>
   </main>
+
+
+  <div class="fullscreen-viewer" id="fullscreenViewer" aria-hidden="true">
+    <button class="fullscreen-close" id="fullscreenClose" type="button" aria-label="Закрыть">×</button>
+    <button class="fullscreen-arrow fullscreen-prev" id="fullscreenPrev" type="button" aria-label="Предыдущий скриншот">‹</button>
+    <img id="fullscreenImage" src="" alt="X-WW Launcher">
+    <button class="fullscreen-arrow fullscreen-next" id="fullscreenNext" type="button" aria-label="Следующий скриншот">›</button>
+  </div>
 
   <footer>
     <div class="container footer-inner">
@@ -721,7 +1126,6 @@
         ourSite: "Our website"
       }
     };
-    const downloadButton = document.getElementById("downloadButton");
 function updateScreenshots(lang) {
       document.querySelectorAll(".lang-shot").forEach(img => {
         const shot = img.dataset.shot;
@@ -737,6 +1141,89 @@ function updateScreenshots(lang) {
         img.src = `assets/images/${lang}/${shot}-${lang}.png`;
       });
     }
+
+
+    const screenshotNames = [
+      "launcher-main",
+      "launcher-download",
+      "launcher-settings"
+    ];
+
+    let currentScreenshot = 0;
+    let currentLanguage = "ru";
+
+    const viewerImage = document.getElementById("viewerImage");
+    const viewerCounter = document.getElementById("viewerCounter");
+    const fullscreenViewer = document.getElementById("fullscreenViewer");
+    const fullscreenImage = document.getElementById("fullscreenImage");
+
+    function screenshotSrc(index = currentScreenshot) {
+      const name = screenshotNames[index];
+      return `assets/images/${currentLanguage}/${name}-${currentLanguage}.png`;
+    }
+
+    function renderScreenshot() {
+      const src = screenshotSrc();
+      viewerImage.src = src;
+      viewerCounter.textContent = `${currentScreenshot + 1} / ${screenshotNames.length}`;
+
+      if (fullscreenViewer.classList.contains("open")) {
+        fullscreenImage.src = src;
+      }
+    }
+
+    function nextScreenshot() {
+      currentScreenshot = (currentScreenshot + 1) % screenshotNames.length;
+      renderScreenshot();
+    }
+
+    function prevScreenshot() {
+      currentScreenshot =
+        (currentScreenshot - 1 + screenshotNames.length) % screenshotNames.length;
+      renderScreenshot();
+    }
+
+    function updateViewerLanguage(lang) {
+      currentLanguage = lang;
+      renderScreenshot();
+
+      const heroImage = document.querySelector(".hero-lang-shot");
+      if (heroImage) {
+        heroImage.src = `assets/images/${lang}/launcher-hero-${lang}.png`;
+      }
+    }
+
+    document.querySelector(".viewer-next").addEventListener("click", nextScreenshot);
+    document.querySelector(".viewer-prev").addEventListener("click", prevScreenshot);
+
+    viewerImage.addEventListener("click", () => {
+      fullscreenImage.src = screenshotSrc();
+      fullscreenViewer.classList.add("open");
+      fullscreenViewer.setAttribute("aria-hidden", "false");
+      document.body.style.overflow = "hidden";
+    });
+
+    function closeFullscreen() {
+      fullscreenViewer.classList.remove("open");
+      fullscreenViewer.setAttribute("aria-hidden", "true");
+      document.body.style.overflow = "";
+    }
+
+    document.getElementById("fullscreenClose").addEventListener("click", closeFullscreen);
+    document.getElementById("fullscreenNext").addEventListener("click", nextScreenshot);
+    document.getElementById("fullscreenPrev").addEventListener("click", prevScreenshot);
+
+    fullscreenViewer.addEventListener("click", event => {
+      if (event.target === fullscreenViewer) closeFullscreen();
+    });
+
+    document.addEventListener("keydown", event => {
+      if (!fullscreenViewer.classList.contains("open")) return;
+
+      if (event.key === "Escape") closeFullscreen();
+      if (event.key === "ArrowRight") nextScreenshot();
+      if (event.key === "ArrowLeft") prevScreenshot();
+    });
 
     function setLanguage(lang) {
       if (!translations[lang]) lang = "ru";
@@ -761,7 +1248,7 @@ function updateScreenshots(lang) {
         btn.classList.toggle("active", btn.dataset.lang === lang);
       });
 
-      updateScreenshots(lang);
+      updateViewerLanguage(lang);
 
       document.querySelectorAll("[data-shot-path]").forEach(el => {
         const shot = el.dataset.shotPath;
@@ -791,7 +1278,7 @@ function updateScreenshots(lang) {
 
     document.getElementById("year").textContent = new Date().getFullYear();
     setLanguage(initialLanguage);
-    setupDownload();
+
   </script>
 </body>
 </html>
