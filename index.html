@@ -532,13 +532,13 @@
         <img
           class="lang-shot hero-lang-shot"
           data-shot="launcher-hero"
-          src="assets/images/launcher-hero-ru.png"
+          src="assets/images/ru/launcher-hero-ru.png"
           alt="X-WW Launcher"
         >
         <div class="shot-placeholder hero-shot-placeholder">
           <div>
             <b>X-WW Launcher</b>
-            <span data-shot-path="launcher-hero">assets/images/launcher-hero-ru.png</span>
+            <span data-shot-path="launcher-hero">assets/images/ru/launcher-hero-ru.png</span>
           </div>
         </div>
       </div>
@@ -578,25 +578,25 @@
         <div class="shots">
           <div class="shot large">
             <span class="shot-number">01</span>
-            <img class="lang-shot" data-shot="launcher-main" src="assets/images/launcher-main-ru.png" alt="X-WW Launcher">
+            <img class="lang-shot" data-shot="launcher-main" src="assets/images/ru/launcher-main-ru.png" alt="X-WW Launcher">
             <div class="shot-placeholder">
-              <div><b data-i18n="shotMainLabel">Главное окно лаунчера</b><span data-shot-path="launcher-main">assets/images/launcher-main-ru.png</span></div>
+              <div><b data-i18n="shotMainLabel">Главное окно лаунчера</b><span data-shot-path="launcher-main">assets/images/ru/launcher-main-ru.png</span></div>
             </div>
           </div>
 
           <div class="shot">
             <span class="shot-number">02</span>
-            <img class="lang-shot" data-shot="launcher-download" src="assets/images/launcher-download-ru.png" alt="X-WW Launcher">
+            <img class="lang-shot" data-shot="launcher-download" src="assets/images/ru/launcher-download-ru.png" alt="X-WW Launcher">
             <div class="shot-placeholder">
-              <div><b data-i18n="shotDownloadLabel">Загрузка сборки</b><span data-shot-path="launcher-download">assets/images/launcher-download-ru.png</span></div>
+              <div><b data-i18n="shotDownloadLabel">Загрузка сборки</b><span data-shot-path="launcher-download">assets/images/ru/launcher-download-ru.png</span></div>
             </div>
           </div>
 
           <div class="shot">
             <span class="shot-number">03</span>
-            <img class="lang-shot" data-shot="launcher-settings" src="assets/images/launcher-settings-ru.png" alt="X-WW Launcher">
+            <img class="lang-shot" data-shot="launcher-settings" src="assets/images/ru/launcher-settings-ru.png" alt="X-WW Launcher">
             <div class="shot-placeholder">
-              <div><b data-i18n="shotSettingsLabel">Настройки</b><span data-shot-path="launcher-settings">assets/images/launcher-settings-ru.png</span></div>
+              <div><b data-i18n="shotSettingsLabel">Настройки</b><span data-shot-path="launcher-settings">assets/images/ru/launcher-settings-ru.png</span></div>
             </div>
           </div>
         </div>
@@ -734,7 +734,7 @@ function updateScreenshots(lang) {
         img.onerror = () => {
           if (parent) parent.classList.remove("has-image");
         };
-        img.src = `assets/images/${shot}-${lang}.png`;
+        img.src = `assets/images/${lang}/${shot}-${lang}.png`;
       });
     }
 
@@ -765,7 +765,7 @@ function updateScreenshots(lang) {
 
       document.querySelectorAll("[data-shot-path]").forEach(el => {
         const shot = el.dataset.shotPath;
-        el.textContent = `assets/images/${shot}-${lang}.png`;
+        el.textContent = `assets/images/${lang}/${shot}-${lang}.png`;
       });
 
       localStorage.setItem("xww-language", lang);
