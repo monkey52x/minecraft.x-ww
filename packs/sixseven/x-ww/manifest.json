@@ -1,9 +1,13 @@
 {
-  "schema_version": 2,
+  "schema_version": 3,
   "id": "sixseven",
   "pack_id": "sixseven",
   "name": "sixseven",
-  "description": "тестовая сборка",
+  "description": {
+    "ru": "тестовая сборка",
+    "uk": "",
+    "en": ""
+  },
   "minecraft": "1.21.1",
   "loader": {
     "type": "neoforge",

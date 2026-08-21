@@ -1,5 +1,29 @@
 {
-  "schema_version": 1,
-  "toggles": {},
-  "profiles": {}
+  "schema_version": 2,
+  "toggles": {
+    "1": {
+      "name": {
+        "ru": "test",
+        "uk": "",
+        "en": ""
+      },
+      "default": false,
+      "mods": [
+        "sodium"
+      ]
+    }
+  },
+  "profiles": {
+    "2": {
+      "name": {
+        "ru": "тест",
+        "uk": "тест",
+        "en": "test"
+      },
+      "disable_mods": [
+        "sodium"
+      ],
+      "disable_resourcepacks": []
+    }
+  }
 }

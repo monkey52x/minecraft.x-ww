@@ -1,6 +1,6 @@
 {
   "schema_version": 2,
-  "version": "1.0.4",
+  "version": "1.0.5",
   "files": [
     {
       "path": "options.txt",
@@ -11,22 +11,22 @@
     },
     {
       "path": "x-ww/changelog.json",
-      "sha256": "9d528fcfe3ef5e955c2f9eb655e2cc217ee04b9dbd4fedf4f94696775ca2918d",
-      "size": 293,
+      "sha256": "ebdc1bd91795b07fccd5fee909953644589b25e029c656bead559de96ec17d99",
+      "size": 1553,
       "strategy": "replace",
       "format": null
     },
     {
       "path": "x-ww/manifest.json",
-      "sha256": "867aa6beb93d8fe1df8e49b81fb212399bac4f1d193f44d6b7bd036dee4f3447",
-      "size": 481,
+      "sha256": "5f55122c5e5669747f29cdccce269524a22012a49ce759f3ee3fd17409431a22",
+      "size": 525,
       "strategy": "replace",
       "format": null
     },
     {
       "path": "x-ww/presets.json",
-      "sha256": "e4a83414a2c73bdbd9bf65f38d0719a08a130d5fd91515fa2524328279a9509d",
-      "size": 61,
+      "sha256": "42440a0bdbdc4498f20030c30b0f3da64b99bfa4c38a369e74c3de72d54a3f98",
+      "size": 430,
       "strategy": "replace",
       "format": null
     }
