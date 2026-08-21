@@ -1,9 +1,28 @@
 {
-  "schema_version": 1,
-  "version": "0.2.0",
-  "mandatory": false,
-  "changelog": "Initial GitHub distribution metadata.",
-  "installer_url": "https://github.com/monkey52x/minecraft.x-ww/releases/download/launcher/launcher-windows-x64.exe",
-  "installer_size": 1,
-  "installer_sha256": "0000000000000000000000000000000000000000000000000000000000000000"
+  "schema_version": 2,
+  "bootstrap": {
+    "version": "0.3.6",
+    "url": "https://github.com/monkey52x/minecraft.x-ww/releases/download/launcher/X-WW-Launcher.exe",
+    "size": 18731762,
+    "sha256": "2e8034da88356b819b7bac1c758f963c48e339ee7edc99992018fe8f483ed318"
+  },
+  "runtime": {
+    "version": "0.3.6",
+    "url": "https://github.com/monkey52x/minecraft.x-ww/releases/download/launcher/runtime.zip",
+    "size": 34060313,
+    "sha256": "d48929b2c18f6e13fb59b76f6bfddbfc0a213abe81bd884883cbb2c4a1296d9a"
+  },
+  "patch": {
+    "base_version": "0.3.6",
+    "target_version": "0.3.6",
+    "url": "https://github.com/monkey52x/minecraft.x-ww/releases/download/launcher/patch.zip",
+    "size": 6136741,
+    "sha256": "0d245b26d9f5c427f7c2010abfa3f806b5e9b00ff0a0088b10195d99acefe548"
+  },
+  "resources": {
+    "version": "1",
+    "url": "https://github.com/monkey52x/minecraft.x-ww/releases/download/launcher/resources.zip",
+    "size": 44299521,
+    "sha256": "e833ee94d10e8743684f1e008c2f83d839003a3881d4dd9bc8f085a845162e79"
+  }
 }
