@@ -526,6 +526,50 @@
     .download-box p { margin-top: 9px; color: var(--white-dim); line-height: 1.65; }
     .download-meta { display:flex; flex-wrap:wrap; gap:16px; margin-top:17px; color:var(--white-muted); font-size:12px; }
 
+
+    .download-actions {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      min-width: 230px;
+    }
+
+    .install-options { display: grid; gap: 14px; }
+
+    .install-option {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      align-items: center;
+      gap: 22px;
+      padding: 22px;
+      border: 1px solid var(--border-glass);
+      border-radius: var(--radius);
+      background: var(--bg-card);
+      box-shadow: var(--shadow-glass);
+    }
+
+    .install-option p {
+      margin-top: 6px;
+      color: var(--white-dim);
+      font-size: 14px;
+      line-height: 1.6;
+    }
+
+    .install-badge {
+      display: inline-flex;
+      margin-bottom: 10px;
+      padding: 5px 8px;
+      border: 1px solid rgba(167,139,250,.2);
+      border-radius: 999px;
+      color: var(--purple-400);
+      background: rgba(124,58,237,.08);
+      font-size: 11px;
+      font-weight: 700;
+    }
+
+    .install-option.disabled { opacity: .55; }
+    .install-option.disabled .btn { pointer-events: none; }
+
     footer {
       padding: 30px 0 42px;
       color: var(--white-muted);
@@ -758,6 +802,8 @@
     }
 
     .download-box { grid-template-columns: 1fr; }
+      .download-actions { min-width: 0; }
+      .install-option { grid-template-columns: 1fr; }
     }
 
     @media (max-width: 620px) {
@@ -936,7 +982,7 @@
           <span data-i18n="heroText">X-WW Launcher — простой способ скачать, обновить и запустить нужную сборку Minecraft без ручной установки файлов.</span>
         </p>
         <div class="actions">
-          <a class="btn primary disabled" id="heroDownload" aria-disabled="true" tabindex="-1"><span data-i18n="downloadLauncher">↓ Скачать лаунчер</span></a>
+          <a class="btn primary" id="heroDownload" href="https://github.com/monkey52x/minecraft.x-ww/releases/download/launcher/Installer-X-WW-Launcher.exe"><span data-i18n="downloadLauncher">↓ Скачать лаунчер</span></a>
           <a class="btn" href="#screenshots"><span data-i18n="viewInterface">Посмотреть интерфейс</span></a>
         </div>
       </div>
@@ -1009,12 +1055,46 @@
             <h2 style="margin-top:0" data-i18n="downloadTitle">Скачать X-WW Launcher</h2>
             <p data-i18n="downloadText">Скачай лаунчер, запусти его и выбери сборку. Все необходимые игровые файлы будут подготовлены автоматически.</p>
           </div>
-          <a class="btn primary disabled" id="downloadButton" aria-disabled="true" tabindex="-1"><span data-i18n="downloadLatest">↓ Скачать последнюю версию</span></a>
+          <div class="download-actions">
+            <a class="btn primary" id="downloadButton" href="https://github.com/monkey52x/minecraft.x-ww/releases/download/launcher/Installer-X-WW-Launcher.exe"><span data-i18n="downloadLatest">↓ Скачать последнюю версию</span></a>
+            <a class="btn" href="#install"><span data-i18n="otherInstallMethods">Другие способы установки</span></a>
+          </div>
         </div>
       </div>
     </section>
   </main>
 
+
+
+    <section id="install">
+      <div class="container">
+        <div class="section-head">
+          <small data-i18n="installSection">Установка</small>
+          <h2 data-i18n="installTitle">Другие способы установки</h2>
+          <p data-i18n="installText">Выберите подходящий способ установки X-WW Launcher.</p>
+        </div>
+
+        <div class="install-options">
+          <article class="install-option">
+            <div>
+              <span class="install-badge" data-i18n="recommended">Рекомендуется</span>
+              <h3>Windows Installer</h3>
+              <p data-i18n="installerText">Обычная установка X-WW Launcher для Windows.</p>
+            </div>
+            <a class="btn primary" href="https://github.com/monkey52x/minecraft.x-ww/releases/download/launcher/Installer-X-WW-Launcher.exe"><span data-i18n="downloadInstaller">↓ Скачать установщик</span></a>
+          </article>
+
+          <article class="install-option disabled">
+            <div>
+              <span class="install-badge" data-i18n="comingSoon">Скоро</span>
+              <h3>Portable</h3>
+              <p data-i18n="portableText">Версия без установки. Пока недоступна.</p>
+            </div>
+            <span class="btn" data-i18n="unavailable">Недоступно</span>
+          </article>
+        </div>
+      </div>
+    </section>
 
   <div class="fullscreen-viewer" id="fullscreenViewer" aria-hidden="true">
     <button class="fullscreen-close" id="fullscreenClose" type="button" aria-label="Закрыть">×</button>
@@ -1068,6 +1148,16 @@
         downloadTitle: "Скачать X-WW Launcher",
         downloadText: "Скачай лаунчер, запусти его и выбери сборку. Все необходимые игровые файлы будут подготовлены автоматически.",
         downloadLatest: "↓ Скачать последнюю версию",
+        otherInstallMethods: "Другие способы установки",
+        installSection: "Установка",
+        installTitle: "Другие способы установки",
+        installText: "Выберите подходящий способ установки X-WW Launcher.",
+        recommended: "Рекомендуется",
+        installerText: "Обычная установка X-WW Launcher для Windows.",
+        downloadInstaller: "↓ Скачать установщик",
+        comingSoon: "Скоро",
+        portableText: "Версия без установки. Пока недоступна.",
+        unavailable: "Недоступно",
         ourSite: "Наш сайт"
       },
       ua: {
@@ -1096,6 +1186,16 @@
         downloadTitle: "Завантажити X-WW Launcher",
         downloadText: "Завантаж лаунчер, запусти його та вибери збірку. Усі необхідні ігрові файли будуть підготовлені автоматично.",
         downloadLatest: "↓ Завантажити останню версію",
+        otherInstallMethods: "Інші способи встановлення",
+        installSection: "Встановлення",
+        installTitle: "Інші способи встановлення",
+        installText: "Виберіть відповідний спосіб встановлення X-WW Launcher.",
+        recommended: "Рекомендується",
+        installerText: "Звичайне встановлення X-WW Launcher для Windows.",
+        downloadInstaller: "↓ Завантажити інсталятор",
+        comingSoon: "Скоро",
+        portableText: "Версія без встановлення. Поки недоступна.",
+        unavailable: "Недоступно",
         ourSite: "Наш сайт"
       },
       en: {
@@ -1124,6 +1224,16 @@
         downloadTitle: "Download X-WW Launcher",
         downloadText: "Download the launcher, start it and select a modpack. All required game files will be prepared automatically.",
         downloadLatest: "↓ Download latest version",
+        otherInstallMethods: "Other installation methods",
+        installSection: "Installation",
+        installTitle: "Other installation methods",
+        installText: "Choose how you want to install X-WW Launcher.",
+        recommended: "Recommended",
+        installerText: "Standard X-WW Launcher installation for Windows.",
+        downloadInstaller: "↓ Download installer",
+        comingSoon: "Coming soon",
+        portableText: "No-install portable version. Not available yet.",
+        unavailable: "Unavailable",
         ourSite: "Our website"
       }
     };
