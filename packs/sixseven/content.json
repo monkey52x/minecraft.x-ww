@@ -1,7 +1,70 @@
 {
   "schema_version": 2,
-  "version": "1.0.5",
+  "version": "1.0.7",
   "files": [
+    {
+      "path": "config/.toml",
+      "sha256": "57d741871716e29b3a318b625e740d590598f001c362b6a4a95e3ee628c5cbc3",
+      "size": 317,
+      "strategy": "preserve",
+      "format": null
+    },
+    {
+      "path": "config/glassential-common.toml",
+      "sha256": "d640c77b9cbb56c6ca4bd3bf4194ad5fa6dd3572cd22934e29c547d9d8942632",
+      "size": 320,
+      "strategy": "preserve",
+      "format": null
+    },
+    {
+      "path": "config/global_data_and_resourcepacks.toml",
+      "sha256": "d6055224690c399a9657218b8fcb9fa2ff1f33a5f83e7a383f4b6aae835938d5",
+      "size": 1061,
+      "strategy": "preserve",
+      "format": null
+    },
+    {
+      "path": "config/gravestone-server.toml",
+      "sha256": "d29dcdd89477dd491c55189d79b69abec433f608e1303ef4701f2846fc3d1f08",
+      "size": 892,
+      "strategy": "preserve",
+      "format": null
+    },
+    {
+      "path": "config/guideme.toml",
+      "sha256": "86ad6c16f2290267eb51f3654ebd8410921118450617154f337bdd442af53c28",
+      "size": 544,
+      "strategy": "preserve",
+      "format": null
+    },
+    {
+      "path": "config/herbsandharvest-common.toml",
+      "sha256": "d640c77b9cbb56c6ca4bd3bf4194ad5fa6dd3572cd22934e29c547d9d8942632",
+      "size": 320,
+      "strategy": "preserve",
+      "format": null
+    },
+    {
+      "path": "config/heyberryshutup-common.toml",
+      "sha256": "2f1db0e113c60c85b221b203fb5b6a785a349ff137bc8a8fd9377ecc7f284df6",
+      "size": 482,
+      "strategy": "preserve",
+      "format": null
+    },
+    {
+      "path": "config/hostilenetworks.cfg",
+      "sha256": "469f443e096696562dcd790b24dc3956ff6dc186826abe48ea487ec615b3e088",
+      "size": 2184,
+      "strategy": "preserve",
+      "format": null
+    },
+    {
+      "path": "config/hyperbox-common.toml",
+      "sha256": "db148968ade38060eb58970680c81b972c36f527964bf851666cf4fa8dd28ae2",
+      "size": 729,
+      "strategy": "preserve",
+      "format": null
+    },
     {
       "path": "options.txt",
       "sha256": "928147675320d1cf9f0988dbcfa3ba9d0983d94b95b8240cc386226cbd856753",
@@ -11,15 +74,15 @@
     },
     {
       "path": "x-ww/changelog.json",
-      "sha256": "ebdc1bd91795b07fccd5fee909953644589b25e029c656bead559de96ec17d99",
-      "size": 1553,
+      "sha256": "54145cffef87226b01bd7c5f111b4fe3ef14037bc2403d4cb3b6a4eb904a3477",
+      "size": 277,
       "strategy": "replace",
       "format": null
     },
     {
       "path": "x-ww/manifest.json",
-      "sha256": "5f55122c5e5669747f29cdccce269524a22012a49ce759f3ee3fd17409431a22",
-      "size": 525,
+      "sha256": "2b334424dfd3ead8f7237e68069f91ed5520ea353cbd267930429082410d8e2b",
+      "size": 562,
       "strategy": "replace",
       "format": null
     },
@@ -27,6 +90,13 @@
       "path": "x-ww/presets.json",
       "sha256": "42440a0bdbdc4498f20030c30b0f3da64b99bfa4c38a369e74c3de72d54a3f98",
       "size": 430,
+      "strategy": "replace",
+      "format": null
+    },
+    {
+      "path": "x-ww/update.json",
+      "sha256": "dfb89846973ea31807c2bcab500dd9ff5ed5932bc5d8f9f485f161b403b565ce",
+      "size": 103,
       "strategy": "replace",
       "format": null
     }

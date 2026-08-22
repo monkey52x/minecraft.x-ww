@@ -5,8 +5,8 @@
   "name": "sixseven",
   "description": {
     "ru": "тестовая сборка",
-    "uk": "",
-    "en": ""
+    "uk": "тестова версія",
+    "en": "test build"
   },
   "minecraft": "1.21.1",
   "loader": {

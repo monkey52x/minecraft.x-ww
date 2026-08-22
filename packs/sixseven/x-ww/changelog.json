@@ -1,39 +1,15 @@
 {
   "schema_version": 2,
-  "version": "1.0.5",
+  "version": "1.0.7",
   "entries": {
     "ru": [
-      "Добавлен переключатель 231312",
-      "Добавлен профиль 231321",
-      "Изменены настройки пресетов",
-      "Удалён профиль 231312",
-      "Удалён переключатель 123321",
-      "Папка config убрана из синхронизации",
-      "Добавлен переключатель test",
-      "Добавлен профиль тест",
-      "Добавлен мод Sodium sodium-neoforge-0.8.13-beta.2+mc1.21.1"
+      "Изменены сведения: описание"
     ],
     "uk": [
-      "Додано перемикач 231312",
-      "Додано профіль 231321",
-      "Змінено налаштування пресетів",
-      "Видалено профіль 231312",
-      "Вилучено перемикач 123321",
-      "Папку config вилучено з синхронізації",
-      "Додано перемикач test",
-      "Додано профіль тесту",
-      "Додано мод Sodium sodium-neoforge-0.8.13-beta.2+mc1.21.1"
+      "Змінено відомості: опис"
     ],
     "en": [
-      "Switch 231312 has been added",
-      "Profile 231321 has been added",
-      "The preset settings have been changed",
-      "Profile 231312 has been deleted",
-      "Switch 123321 has been removed",
-      "The \"config\" folder has been removed from synchronization",
-      "Added a \"test\" switch",
-      "Added a test profile",
-      "Added mod Sodium sodium-neoforge-0.8.13-beta.2+mc1.21.1"
+      "Information updated: description"
     ]
   }
 }
