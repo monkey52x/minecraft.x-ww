@@ -445,6 +445,10 @@
       font-size: 30px;
       line-height: 1;
       transition: .2s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0;
     }
 
     .viewer-arrow:hover {
@@ -754,10 +758,12 @@
       .fullscreen-viewer { padding: 64px 18px 24px; }
   
     .screenshot-viewer {
-      display: grid;
       grid-template-columns: 48px minmax(0, 1fr) 48px;
-      align-items: center;
       gap: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0;
     }
 
     .viewer-stage {
@@ -805,6 +811,10 @@
       font-size: 30px;
       line-height: 1;
       transition: .2s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0;
     }
 
     .viewer-arrow:hover {
@@ -951,6 +961,10 @@
       font-size: 30px;
       line-height: 1;
       transition: .2s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0;
     }
 
     .viewer-arrow:hover {
@@ -1031,6 +1045,14 @@
 
     .download-box { padding: 24px; }
     }
+  
+    /* Visual vertical correction for Segoe UI chevron glyphs */
+    .viewer-arrow > span {
+      display: block;
+      line-height: 1;
+      transform: translateY(-3px);
+    }
+
   </style>
 </head>
 <body>
@@ -1149,7 +1171,7 @@
         </div>
 
         <div class="screenshot-viewer">
-          <button class="viewer-arrow viewer-prev" type="button" aria-label="Предыдущий скриншот">‹</button>
+          <button class="viewer-arrow viewer-prev" type="button" aria-label="Предыдущий скриншот"><span>‹</span></button>
 
           <div class="viewer-stage" id="viewerStage">
             <img
@@ -1161,7 +1183,7 @@
             <div class="viewer-counter" id="viewerCounter">1 / 3</div>
           </div>
 
-          <button class="viewer-arrow viewer-next" type="button" aria-label="Следующий скриншот">›</button>
+          <button class="viewer-arrow viewer-next" type="button" aria-label="Следующий скриншот"><span>›</span></button>
         </div>
       </div>
     </section>
@@ -1184,9 +1206,9 @@
   </main>
 <div class="fullscreen-viewer" id="fullscreenViewer" aria-hidden="true">
     <button class="fullscreen-close" id="fullscreenClose" type="button" aria-label="Закрыть">×</button>
-    <button class="fullscreen-arrow fullscreen-prev" id="fullscreenPrev" type="button" aria-label="Предыдущий скриншот">‹</button>
+    <button class="fullscreen-arrow fullscreen-prev" id="fullscreenPrev" type="button" aria-label="Предыдущий скриншот"><span>‹</span></button>
     <img id="fullscreenImage" src="" alt="X-WW Launcher">
-    <button class="fullscreen-arrow fullscreen-next" id="fullscreenNext" type="button" aria-label="Следующий скриншот">›</button>
+    <button class="fullscreen-arrow fullscreen-next" id="fullscreenNext" type="button" aria-label="Следующий скриншот"><span>›</span></button>
   </div>
 
   <footer>
