@@ -38,22 +38,35 @@
       font-family: var(--font-main);
       color: var(--white);
       background:
-        radial-gradient(circle at 15% 5%, rgba(124,58,237,.16), transparent 30rem),
-        radial-gradient(circle at 90% 35%, rgba(236,72,153,.08), transparent 32rem),
+        radial-gradient(circle 30rem at 15% 80px, rgba(124,58,237,.16), transparent),
+        radial-gradient(circle 32rem at 90% 340px, rgba(236,72,153,.08), transparent),
         var(--bg-primary);
+      background-repeat: no-repeat;
     }
 
     body::before {
       content: "";
       position: fixed;
       inset: 0;
-      z-index: -1;
+      z-index: 41;
       pointer-events: none;
       background-image:
         linear-gradient(rgba(255,255,255,.018) 1px, transparent 1px),
         linear-gradient(90deg, rgba(255,255,255,.018) 1px, transparent 1px);
       background-size: 42px 42px;
       mask-image: linear-gradient(to bottom, black, transparent 80%);
+    }
+
+    body > nav,
+    body > main,
+    body > footer {
+      position: relative;
+      z-index: 42;
+    }
+
+    body > .fullscreen-viewer {
+      position: fixed;
+      z-index: 9999;
     }
 
     a { color: inherit; text-decoration: none; }
@@ -570,6 +583,75 @@
     .install-option.disabled { opacity: .55; }
     .install-option.disabled .btn { pointer-events: none; }
 
+
+    .route-page {
+      display: none;
+      min-height: calc(100vh - 100px);
+      padding: 72px 0 90px;
+    }
+
+    body::after {
+      content: "";
+      position: fixed;
+      inset: 0;
+      z-index: 40;
+      pointer-events: none;
+      opacity: 0;
+      visibility: hidden;
+      background:
+        radial-gradient(circle 30rem at 15% 80px, rgba(124,58,237,.16), transparent),
+        radial-gradient(circle 32rem at 90% 340px, rgba(236,72,153,.08), transparent),
+        var(--bg-primary);
+      background-repeat: no-repeat;
+
+      transition: opacity .22s ease, visibility .22s ease;
+    }
+
+    body.install-transition::after {
+      opacity: 1;
+      visibility: visible;
+    }
+
+
+    body.install-transition main,
+    body.install-transition footer {
+      opacity: 0;
+      transition: opacity .18s ease;
+      pointer-events: none;
+    }
+
+    body.install-transition .nav {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .route-page.active {
+      display: block;
+    }
+
+    body.install-page-open main > section,
+    body.install-page-open footer {
+      display: none;
+    }
+
+    body.install-page-open #installPage {
+      display: block;
+    }
+
+    .install-page-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 34px;
+    }
+
+    .back-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+
     footer {
       padding: 30px 0 42px;
       color: var(--white-muted);
@@ -974,6 +1056,43 @@
   </nav>
 
   <main>
+
+  <section class="route-page" id="installPage">
+    <div class="container">
+      <div class="install-page-top">
+        <a class="btn back-btn" href="#download" data-i18n="backToDownload">← Назад к скачиванию</a>
+      </div>
+
+      <div class="section-head">
+        <small data-i18n="installSection">Установка</small>
+        <h2 data-i18n="installTitle">Другие способы установки</h2>
+        <p data-i18n="installText">Выберите подходящий способ установки X-WW Launcher.</p>
+      </div>
+
+      <div class="install-options">
+        <article class="install-option">
+          <div>
+            <span class="install-badge" data-i18n="recommended">Рекомендуется</span>
+            <h3>Windows Installer</h3>
+            <p data-i18n="installerText">Обычная установка X-WW Launcher для Windows.</p>
+          </div>
+          <a class="btn primary" href="https://github.com/monkey52x/minecraft.x-ww/releases/download/launcher/Installer-X-WW-Launcher.exe">
+            <span data-i18n="downloadInstaller">↓ Скачать установщик</span>
+          </a>
+        </article>
+
+        <article class="install-option disabled">
+          <div>
+            <span class="install-badge" data-i18n="comingSoon">Скоро</span>
+            <h3>Portable</h3>
+            <p data-i18n="portableText">Версия без установки. Пока недоступна.</p>
+          </div>
+          <span class="btn" data-i18n="unavailable">Недоступно</span>
+        </article>
+      </div>
+    </div>
+  </section>
+
     <section class="hero container" id="home">
       <div class="hero-copy">
         <div class="eyebrow"><span class="dot"></span> <span data-i18n="available">Лаунчер доступен для Windows</span></div>
@@ -982,7 +1101,7 @@
           <span data-i18n="heroText">X-WW Launcher — простой способ скачать, обновить и запустить нужную сборку Minecraft без ручной установки файлов.</span>
         </p>
         <div class="actions">
-          <a class="btn primary" id="heroDownload" href="https://github.com/monkey52x/minecraft.x-ww/releases/download/launcher/Installer-X-WW-Launcher.exe"><span data-i18n="downloadLauncher">↓ Скачать лаунчер</span></a>
+          <a class="btn primary" id="heroDownload" href="#download"><span data-i18n="downloadLauncher">↓ Скачать лаунчер</span></a>
           <a class="btn" href="#screenshots"><span data-i18n="viewInterface">Посмотреть интерфейс</span></a>
         </div>
       </div>
@@ -1063,40 +1182,7 @@
       </div>
     </section>
   </main>
-
-
-
-    <section id="install">
-      <div class="container">
-        <div class="section-head">
-          <small data-i18n="installSection">Установка</small>
-          <h2 data-i18n="installTitle">Другие способы установки</h2>
-          <p data-i18n="installText">Выберите подходящий способ установки X-WW Launcher.</p>
-        </div>
-
-        <div class="install-options">
-          <article class="install-option">
-            <div>
-              <span class="install-badge" data-i18n="recommended">Рекомендуется</span>
-              <h3>Windows Installer</h3>
-              <p data-i18n="installerText">Обычная установка X-WW Launcher для Windows.</p>
-            </div>
-            <a class="btn primary" href="https://github.com/monkey52x/minecraft.x-ww/releases/download/launcher/Installer-X-WW-Launcher.exe"><span data-i18n="downloadInstaller">↓ Скачать установщик</span></a>
-          </article>
-
-          <article class="install-option disabled">
-            <div>
-              <span class="install-badge" data-i18n="comingSoon">Скоро</span>
-              <h3>Portable</h3>
-              <p data-i18n="portableText">Версия без установки. Пока недоступна.</p>
-            </div>
-            <span class="btn" data-i18n="unavailable">Недоступно</span>
-          </article>
-        </div>
-      </div>
-    </section>
-
-  <div class="fullscreen-viewer" id="fullscreenViewer" aria-hidden="true">
+<div class="fullscreen-viewer" id="fullscreenViewer" aria-hidden="true">
     <button class="fullscreen-close" id="fullscreenClose" type="button" aria-label="Закрыть">×</button>
     <button class="fullscreen-arrow fullscreen-prev" id="fullscreenPrev" type="button" aria-label="Предыдущий скриншот">‹</button>
     <img id="fullscreenImage" src="" alt="X-WW Launcher">
@@ -1149,6 +1235,7 @@
         downloadText: "Скачай лаунчер, запусти его и выбери сборку. Все необходимые игровые файлы будут подготовлены автоматически.",
         downloadLatest: "↓ Скачать последнюю версию",
         otherInstallMethods: "Другие способы установки",
+        backToDownload: "← Назад к скачиванию",
         installSection: "Установка",
         installTitle: "Другие способы установки",
         installText: "Выберите подходящий способ установки X-WW Launcher.",
@@ -1187,6 +1274,7 @@
         downloadText: "Завантаж лаунчер, запусти його та вибери збірку. Усі необхідні ігрові файли будуть підготовлені автоматично.",
         downloadLatest: "↓ Завантажити останню версію",
         otherInstallMethods: "Інші способи встановлення",
+        backToDownload: "← Назад до завантаження",
         installSection: "Встановлення",
         installTitle: "Інші способи встановлення",
         installText: "Виберіть відповідний спосіб встановлення X-WW Launcher.",
@@ -1225,6 +1313,7 @@
         downloadText: "Download the launcher, start it and select a modpack. All required game files will be prepared automatically.",
         downloadLatest: "↓ Download latest version",
         otherInstallMethods: "Other installation methods",
+        backToDownload: "← Back to download",
         installSection: "Installation",
         installTitle: "Other installation methods",
         installText: "Choose how you want to install X-WW Launcher.",
@@ -1397,8 +1486,86 @@ function updateScreenshots(lang) {
       else initialLanguage = "en";
     }
 
+
+    let routeInitialized = false;
+    let internalInstallSwitch = false;
+
+    function applyRoute(hash, animateTarget = true) {
+      const isInstall = hash === "#install";
+
+      document.body.classList.toggle("install-page-open", isInstall);
+      document.getElementById("installPage").classList.toggle("active", isInstall);
+
+      if (isInstall) {
+        window.scrollTo({ top: 0, behavior: "auto" });
+        return;
+      }
+
+      requestAnimationFrame(() => {
+        const target = document.querySelector(hash);
+
+        if (target) {
+          target.scrollIntoView({
+            behavior: animateTarget ? "smooth" : "auto",
+            block: "start"
+          });
+        }
+      });
+    }
+
+    function handleRoute() {
+      const hash = window.location.hash || "#home";
+
+      if (!routeInitialized) {
+        routeInitialized = true;
+        applyRoute(hash, false);
+        return;
+      }
+
+      if (hash === "#install" && internalInstallSwitch) {
+        internalInstallSwitch = false;
+        applyRoute(hash, false);
+        return;
+      }
+
+      // Обычные разделы сайта больше не используют переход страницы.
+      applyRoute(hash, true);
+    }
+
+    function openInstallPage() {
+      if (window.location.hash === "#install") return;
+
+      // Специальный переход только для #install:
+      // поверх текущего viewport плавно появляется тот же фон.
+      document.body.classList.add("install-transition");
+
+      setTimeout(() => {
+        // Всё это происходит уже за непрозрачным слоем.
+        window.scrollTo({ top: 0, behavior: "auto" });
+
+        internalInstallSwitch = true;
+        window.location.hash = "#install";
+
+        requestAnimationFrame(() => {
+          requestAnimationFrame(() => {
+            document.body.classList.remove("install-transition");
+          });
+        });
+      }, 220);
+    }
+
+    document.querySelectorAll('a[href="#install"]').forEach(link => {
+      link.addEventListener("click", event => {
+        event.preventDefault();
+        openInstallPage();
+      });
+    });
+
+    window.addEventListener("hashchange", handleRoute);
+
     document.getElementById("year").textContent = new Date().getFullYear();
     setLanguage(initialLanguage);
+    handleRoute();
 
   </script>
 </body>
