@@ -4,10 +4,10 @@
     "1": {
       "name": {
         "ru": "test",
-        "uk": "",
-        "en": ""
+        "uk": "тест",
+        "en": "test"
       },
-      "default": false,
+      "default": true,
       "mods": [
         "sodium"
       ]

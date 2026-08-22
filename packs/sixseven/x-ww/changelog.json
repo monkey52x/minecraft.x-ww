@@ -1,15 +1,15 @@
 {
   "schema_version": 2,
-  "version": "1.0.7",
+  "version": "1.0.8",
   "entries": {
     "ru": [
-      "Изменены сведения: описание"
+      "Изменены настройки пресетов"
     ],
     "uk": [
-      "Змінено відомості: опис"
+      "Змінено налаштування пресетів"
     ],
     "en": [
-      "Information updated: description"
+      "The preset settings have been changed"
     ]
   }
 }

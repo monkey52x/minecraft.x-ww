@@ -1,6 +1,6 @@
 {
   "schema_version": 2,
-  "version": "1.0.7",
+  "version": "1.0.8",
   "files": [
     {
       "path": "config/.toml",
@@ -74,8 +74,8 @@
     },
     {
       "path": "x-ww/changelog.json",
-      "sha256": "54145cffef87226b01bd7c5f111b4fe3ef14037bc2403d4cb3b6a4eb904a3477",
-      "size": 277,
+      "sha256": "e2b55e830a983313fb01b032f194110ede9b3c93b44b8f80aec8bf9fb9c9583e",
+      "size": 296,
       "strategy": "replace",
       "format": null
     },
@@ -88,8 +88,8 @@
     },
     {
       "path": "x-ww/presets.json",
-      "sha256": "42440a0bdbdc4498f20030c30b0f3da64b99bfa4c38a369e74c3de72d54a3f98",
-      "size": 430,
+      "sha256": "99df6872604c0ee39dbd2bc43f52bce64e83c8cb8fe94fb3160139dbe0fcc826",
+      "size": 441,
       "strategy": "replace",
       "format": null
     },
