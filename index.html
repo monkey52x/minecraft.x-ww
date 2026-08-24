@@ -551,7 +551,14 @@
       min-width: 230px;
     }
 
-    .install-options { display: grid; gap: 14px; }
+    .install-options { display: grid; gap: 28px; }
+    .install-method { display: grid; gap: 16px; padding: 26px; border: 1px solid var(--border-glass); border-radius: 22px; background: rgba(255,255,255,.018); box-shadow: var(--shadow-glass); }
+    .setup-method { border-color: rgba(255,255,255,.10); }
+    .portable-method { border-color: rgba(167,139,250,.34); background: radial-gradient(circle at 100% 0%, rgba(124,58,237,.13), transparent 30rem), rgba(124,58,237,.035); }
+    .install-method-head { display: flex; align-items: center; gap: 13px; padding-bottom: 16px; border-bottom: 1px solid rgba(255,255,255,.08); }
+    .install-method-number { display: grid; place-items: center; width: 34px; height: 34px; flex: 0 0 34px; border: 1px solid rgba(167,139,250,.32); border-radius: 11px; color: var(--purple-300); background: rgba(124,58,237,.13); font-size: 14px; font-weight: 800; }
+    .install-method-head h3 { font-size: 19px; }
+    .install-method .install-option { box-shadow: none; }
 
     .install-option {
       display: grid;
@@ -587,35 +594,27 @@
     .install-option.disabled { opacity: .55; }
     .install-option.disabled .btn { pointer-events: none; }
 
+    .launcher-requirement, .install-guide { margin-top: 0; padding: 24px; border: 1px solid var(--border-glass); border-radius: var(--radius); background: rgba(16,13,22,.38); box-shadow: none; }
+    .launcher-requirement { margin-top: 2px; }
+    .launcher-requirement > p { margin-top: 7px; color: var(--white-dim); line-height: 1.65; }
+    .launcher-cards { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; margin-top: 18px; }
+    .launcher-card { display: flex; align-items: center; gap: 15px; min-height: 98px; padding: 16px; border: 1px solid var(--border-glass); border-radius: 14px; color: var(--white); background: rgba(255,255,255,.025); transition: transform .18s ease, border-color .18s ease, background .18s ease; }
+    .launcher-card:hover { transform: translateY(-2px); border-color: rgba(167,139,250,.42); background: rgba(167,139,250,.07); }
+    .launcher-card img { width: 58px; height: 58px; flex: 0 0 58px; object-fit: contain; }
+    .launcher-card strong { display: block; font-size: 15px; }
+    .launcher-card span { display: block; margin-top: 5px; color: var(--white-dim); font-size: 13px; line-height: 1.45; }
+    .portable-note { margin-top: 16px; padding: 12px 14px; border-left: 3px solid var(--purple-400); border-radius: 0 10px 10px 0; color: var(--white-dim); background: rgba(124,58,237,.08); font-size: 13px; line-height: 1.55; }
+    .guide-only { display: inline-flex; margin-bottom: 11px; padding: 6px 10px; border: 1px solid rgba(167,139,250,.35); border-radius: 999px; color: var(--purple-300); background: rgba(124,58,237,.14); font-size: 11px; font-weight: 800; text-transform: uppercase; letter-spacing: .035em; }
+    .install-guide ol { margin: 15px 0 0; padding-left: 22px; color: var(--white-dim); }
+    .install-guide li { padding: 5px 0 5px 5px; line-height: 1.55; }
+    .install-guide code { color: var(--purple-300); font-family: Consolas, monospace; }
+
 
     .route-page {
       display: none;
       min-height: calc(100vh - 100px);
       padding: 72px 0 90px;
     }
-
-    body::after {
-      content: "";
-      position: fixed;
-      inset: 0;
-      z-index: 40;
-      pointer-events: none;
-      opacity: 0;
-      visibility: hidden;
-      background:
-        radial-gradient(circle 30rem at 15% 80px, rgba(124,58,237,.16), transparent),
-        radial-gradient(circle 32rem at 90% 340px, rgba(236,72,153,.08), transparent),
-        var(--bg-primary);
-      background-repeat: no-repeat;
-
-      transition: opacity .22s ease, visibility .22s ease;
-    }
-
-    body.install-transition::after {
-      opacity: 1;
-      visibility: visible;
-    }
-
 
     body.install-transition main,
     body.install-transition footer {
@@ -909,6 +908,8 @@
     .download-box { grid-template-columns: 1fr; }
       .download-actions { min-width: 0; }
       .install-option { grid-template-columns: 1fr; }
+      .install-method { padding: 18px; }
+      .launcher-cards { grid-template-columns: 1fr; }
     }
 
     @media (max-width: 620px) {
@@ -1105,25 +1106,56 @@
       </div>
 
       <div class="install-options">
-        <article class="install-option">
-          <div>
-            <span class="install-badge" data-i18n="recommended">Рекомендуется</span>
-            <h3>Windows Installer</h3>
-            <p data-i18n="installerText">Обычная установка X-WW Launcher для Windows.</p>
-          </div>
-          <a class="btn primary" href="https://github.com/monkey52x/minecraft.x-ww/releases/download/launcher/Installer-X-WW-Launcher.exe">
-            <span data-i18n="downloadInstaller">↓ Скачать установщик</span>
-          </a>
-        </article>
+        <section class="install-method setup-method">
+          <div class="install-method-head"><span class="install-method-number">1</span><h3 data-i18n="setupMethodTitle">Установка через Setup</h3></div>
+          <article class="install-option">
+            <div>
+              <span class="install-badge" data-i18n="recommended">Рекомендуется</span>
+              <h3>Windows Installer</h3>
+              <p data-i18n="installerText">Обычная установка X-WW Launcher для Windows.</p>
+            </div>
+            <a class="btn primary" href="https://github.com/monkey52x/minecraft.x-ww/releases/download/launcher/Installer-X-WW-Launcher.exe"><span data-i18n="downloadInstaller">↓ Скачать установщик</span></a>
+          </article>
+        </section>
 
-        <article class="install-option disabled">
-          <div>
-            <span class="install-badge" data-i18n="comingSoon">Скоро</span>
-            <h3>Portable</h3>
-            <p data-i18n="portableText">Версия без установки. Пока недоступна.</p>
-          </div>
-          <span class="btn" data-i18n="unavailable">Недоступно</span>
-        </article>
+        <section class="install-method portable-method">
+          <div class="install-method-head"><span class="install-method-number">2</span><h3 data-i18n="portableMethodTitle">Portable-версия</h3></div>
+          <article class="install-option">
+            <div>
+              <span class="install-badge" data-i18n="noInstall">Без установки</span>
+              <h3>Portable</h3>
+              <p data-i18n="portableText">Переносная версия X-WW Launcher в ZIP-архиве.</p>
+            </div>
+            <a class="btn" href="https://github.com/monkey52x/minecraft.x-ww/releases/download/launcher/X-WW-Launcher.zip"><span data-i18n="downloadPortable">↓ Скачать Portable</span></a>
+          </article>
+
+      <section class="launcher-requirement">
+        <h3 data-i18n="requiredLauncherTitle">Для работы нужен игровой лаунчер</h3>
+        <p data-i18n="requiredLauncherText">Выберите вариант в зависимости от наличия лицензии Minecraft.</p>
+        <div class="launcher-cards">
+          <a class="launcher-card" href="https://prismlauncher.org/download/windows/" target="_blank" rel="noopener noreferrer">
+            <img src="https://github.com/PrismLauncher/PrismLauncher/raw/refs/heads/develop/program_info/org.prismlauncher.PrismLauncher_256.png" alt="Prism Launcher" loading="lazy">
+            <span><strong>Prism Launcher</strong><span data-i18n="prismText">Для игры с лицензией Minecraft.</span></span>
+          </a>
+          <a class="launcher-card" href="https://freesmlauncher.org/downloads" target="_blank" rel="noopener noreferrer">
+            <img src="https://github.com/FreesmTeam/FreesmLauncher/raw/refs/heads/develop/program_info/org.freesmlauncher.FreesmLauncher_256.png" alt="Freesm Launcher" loading="lazy">
+            <span><strong>Freesm Launcher</strong><span data-i18n="freesmText">Для игры без лицензии Minecraft.</span></span>
+          </a>
+        </div>
+        <div class="portable-note" data-i18n="launcherPortableNote">На странице загрузки выберите Portable-версию, а не Setup или Installer.</div>
+      </section>
+
+      <section class="install-guide">
+        <span class="guide-only" data-i18n="guidePortableOnly">Только для Portable-версии</span>
+        <h3 data-i18n="guideTitle">Инструкция для Portable</h3>
+        <ol>
+          <li data-i18n-html="guideStep1">Распакуйте папку <code>x-ww</code> рядом с <code>prismlauncher.exe</code> или <code>freesmlauncher.exe</code>.</li>
+          <li data-i18n-html="guideStep2">Запустите <code>x-ww\X-WW-Launcher.exe</code>.</li>
+          <li data-i18n="guideStep3">При первом запуске конфигурация создастся автоматически.</li>
+          <li data-i18n="guideStep4">Сборки устанавливаются из каталога или через импорт ZIP.</li>
+        </ol>
+      </section>
+        </section>
       </div>
     </div>
 
@@ -1291,11 +1323,24 @@
         installTitle: "Другие способы установки",
         installText: "Выберите подходящий способ установки X-WW Launcher.",
         recommended: "Рекомендуется",
+        setupMethodTitle: "Установка через Setup",
+        portableMethodTitle: "Portable-версия",
         installerText: "Обычная установка X-WW Launcher для Windows.",
         downloadInstaller: "↓ Скачать установщик",
-        comingSoon: "Скоро",
-        portableText: "Версия без установки. Пока недоступна.",
-        unavailable: "Недоступно",
+        noInstall: "Без установки",
+        portableText: "Переносная версия X-WW Launcher в ZIP-архиве.",
+        downloadPortable: "↓ Скачать Portable",
+        requiredLauncherTitle: "Для работы нужен игровой лаунчер",
+        requiredLauncherText: "Выберите вариант в зависимости от наличия лицензии Minecraft.",
+        prismText: "Для игры с лицензией Minecraft.",
+        freesmText: "Для игры без лицензии Minecraft.",
+        launcherPortableNote: "На странице загрузки выберите Portable-версию, а не Setup или Installer.",
+        guideTitle: "Инструкция для Portable",
+        guidePortableOnly: "Только для Portable-версии",
+        guideStep1: "Распакуйте папку <code>x-ww</code> рядом с <code>prismlauncher.exe</code> или <code>freesmlauncher.exe</code>.",
+        guideStep2: "Запустите <code>x-ww\\X-WW-Launcher.exe</code>.",
+        guideStep3: "При первом запуске конфигурация создастся автоматически.",
+        guideStep4: "Сборки устанавливаются из каталога или через импорт ZIP.",
         ourSite: "Наш сайт"
       },
       ua: {
@@ -1330,11 +1375,24 @@
         installTitle: "Інші способи встановлення",
         installText: "Виберіть відповідний спосіб встановлення X-WW Launcher.",
         recommended: "Рекомендується",
+        setupMethodTitle: "Встановлення через Setup",
+        portableMethodTitle: "Portable-версія",
         installerText: "Звичайне встановлення X-WW Launcher для Windows.",
         downloadInstaller: "↓ Завантажити інсталятор",
-        comingSoon: "Скоро",
-        portableText: "Версія без встановлення. Поки недоступна.",
-        unavailable: "Недоступно",
+        noInstall: "Без встановлення",
+        portableText: "Переносна версія X-WW Launcher у ZIP-архіві.",
+        downloadPortable: "↓ Завантажити Portable",
+        requiredLauncherTitle: "Для роботи потрібен ігровий лаунчер",
+        requiredLauncherText: "Виберіть варіант залежно від наявності ліцензії Minecraft.",
+        prismText: "Для гри з ліцензією Minecraft.",
+        freesmText: "Для гри без ліцензії Minecraft.",
+        launcherPortableNote: "На сторінці завантаження виберіть Portable-версію, а не Setup або Installer.",
+        guideTitle: "Інструкція для Portable",
+        guidePortableOnly: "Лише для Portable-версії",
+        guideStep1: "Розпакуйте папку <code>x-ww</code> поруч із <code>prismlauncher.exe</code> або <code>freesmlauncher.exe</code>.",
+        guideStep2: "Запустіть <code>x-ww\\X-WW-Launcher.exe</code>.",
+        guideStep3: "Під час першого запуску конфігурацію буде створено автоматично.",
+        guideStep4: "Збірки встановлюються з каталогу або імпортом ZIP.",
         ourSite: "Наш сайт"
       },
       en: {
@@ -1369,11 +1427,24 @@
         installTitle: "Other installation methods",
         installText: "Choose how you want to install X-WW Launcher.",
         recommended: "Recommended",
+        setupMethodTitle: "Install using Setup",
+        portableMethodTitle: "Portable version",
         installerText: "Standard X-WW Launcher installation for Windows.",
         downloadInstaller: "↓ Download installer",
-        comingSoon: "Coming soon",
-        portableText: "No-install portable version. Not available yet.",
-        unavailable: "Unavailable",
+        noInstall: "No installation",
+        portableText: "Portable X-WW Launcher supplied as a ZIP archive.",
+        downloadPortable: "↓ Download Portable",
+        requiredLauncherTitle: "A game launcher is required",
+        requiredLauncherText: "Choose an option based on whether you own Minecraft.",
+        prismText: "For playing with a Minecraft license.",
+        freesmText: "For playing without a Minecraft license.",
+        launcherPortableNote: "On the download page, choose the Portable version, not Setup or Installer.",
+        guideTitle: "Portable installation guide",
+        guidePortableOnly: "Portable version only",
+        guideStep1: "Extract the <code>x-ww</code> folder next to <code>prismlauncher.exe</code> or <code>freesmlauncher.exe</code>.",
+        guideStep2: "Run <code>x-ww\\X-WW-Launcher.exe</code>.",
+        guideStep3: "The configuration is created automatically on first launch.",
+        guideStep4: "Install builds from the catalog or by importing a ZIP archive.",
         ourSite: "Our website"
       }
     };
@@ -1524,7 +1595,7 @@ function updateScreenshots(lang) {
     });
 
     function setupDownload() {
-      downloadButton.href = "https://github.com/monkey52x/minecraft.x-ww/releases/download/launcher/launcher-windows-x64.exe";
+      downloadButton.href = "https://github.com/monkey52x/minecraft.x-ww/releases/download/launcher/Installer-X-WW-Launcher.exe";
     }
 
     const savedLanguage = localStorage.getItem("xww-language");
@@ -1541,14 +1612,24 @@ function updateScreenshots(lang) {
     let routeInitialized = false;
     let internalInstallSwitch = false;
 
+    function scrollToTopInstantly() {
+      const root = document.documentElement;
+      const previousBehavior = root.style.scrollBehavior;
+
+      root.style.scrollBehavior = "auto";
+      window.scrollTo(0, 0);
+      root.style.scrollBehavior = previousBehavior;
+    }
+
     function applyRoute(hash, animateTarget = true) {
       const isInstall = hash === "#install";
+      const installPage = document.getElementById("installPage");
 
       document.body.classList.toggle("install-page-open", isInstall);
-      document.getElementById("installPage").classList.toggle("active", isInstall);
+      installPage.classList.toggle("active", isInstall);
 
       if (isInstall) {
-        window.scrollTo({ top: 0, behavior: "auto" });
+        scrollToTopInstantly();
         return;
       }
 
@@ -1587,13 +1668,11 @@ function updateScreenshots(lang) {
       if (window.location.hash === "#install") return;
 
       // Специальный переход только для #install:
-      // поверх текущего viewport плавно появляется тот же фон.
+      // скрываем старый контент, прокручиваем наверх и показываем Install.
       document.body.classList.add("install-transition");
+      scrollToTopInstantly();
 
       setTimeout(() => {
-        // Всё это происходит уже за непрозрачным слоем.
-        window.scrollTo({ top: 0, behavior: "auto" });
-
         internalInstallSwitch = true;
         window.location.hash = "#install";
 
