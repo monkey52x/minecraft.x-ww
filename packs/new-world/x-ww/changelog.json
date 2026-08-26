@@ -1,15 +1,15 @@
 {
   "schema_version": 2,
-  "version": "0.0.3",
+  "version": "0.0.4",
   "entries": {
     "ru": [
-      "Папка defaultconfigs убрана из синхронизации"
+      "Папка scripts убрана из синхронизации"
     ],
     "uk": [
-      "Папку defaultconfigs вилучено з синхронізації"
+      "Папку «scripts» вилучено з синхронізації"
     ],
     "en": [
-      "The \"defaultconfigs\" folder has been removed from synchronization"
+      "The \"scripts\" folder has been removed from synchronization"
     ]
   }
 }

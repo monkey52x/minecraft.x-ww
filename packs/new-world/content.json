@@ -1,6 +1,6 @@
 {
   "schema_version": 2,
-  "version": "0.0.3",
+  "version": "0.0.4",
   "files": [
     {
       "path": "Background.png",
@@ -25,8 +25,8 @@
     },
     {
       "path": "x-ww/changelog.json",
-      "sha256": "cab39ae5a169aec36110f7bc808513e0ae82385ffd89f41845392c3814d4567f",
-      "size": 360,
+      "sha256": "9cd4d4649ba478486d7e1b880eb4e5a307c43e0b2f900da5b9aff10f9d6ea87b",
+      "size": 343,
       "strategy": "replace",
       "format": null
     },
