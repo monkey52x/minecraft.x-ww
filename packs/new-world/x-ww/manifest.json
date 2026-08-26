@@ -1,0 +1,24 @@
+{
+  "schema_version": 3,
+  "id": "new-world",
+  "pack_id": "new-world",
+  "name": "New World",
+  "description": {
+    "ru": "Исследуй безграничный мир, строй, развивайся и создавай свою историю.",
+    "uk": "Досліджуй безмежний світ, будуй, розвивайся та створюй свою історію.",
+    "en": "Explore a boundless world, build, grow, and create your own story."
+  },
+  "minecraft": "1.21.1",
+  "loader": {
+    "type": "neoforge",
+    "version": "21.1.248"
+  },
+  "java": null,
+  "server_address": "new-minecraft.x-ww.xyz",
+  "packwiz": {
+    "url": "https://monkey52x.github.io/minecraft.x-ww/packs/new-world/pack.toml"
+  },
+  "launcher_data": {
+    "url": "https://monkey52x.github.io/minecraft.x-ww/packs/new-world/content.json"
+  }
+}

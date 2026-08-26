@@ -1,0 +1,41 @@
+{
+  "schema_version": 2,
+  "version": "0.0.2",
+  "files": [
+    {
+      "path": "Background.png",
+      "sha256": "a407f8a9ac8776a0ac6f1fb938b59f977d0823a8b5a6ff2ec42580f1fb93f993",
+      "size": 2887706,
+      "strategy": "preserve",
+      "format": null
+    },
+    {
+      "path": "Logo.png",
+      "sha256": "475d509f5d6d4fbabca2345240f83c20c173d9234ae88870fadcaa544c91e547",
+      "size": 2691737,
+      "strategy": "preserve",
+      "format": null
+    },
+    {
+      "path": "servers.dat",
+      "sha256": "96d8ceb46b8f297a1f98bb55501db3a19f4830379db22454c960ac9bf3361553",
+      "size": 93,
+      "strategy": "preserve",
+      "format": null
+    },
+    {
+      "path": "x-ww/changelog.json",
+      "sha256": "66655581cf470b4d8630193a7c6937429a0de28387dade3cb6f06202fb1e19c4",
+      "size": 109,
+      "strategy": "replace",
+      "format": null
+    },
+    {
+      "path": "x-ww/manifest.json",
+      "sha256": "416a4c71ad742ad333bee9e525249ae32df80d102d89e81d8475256c567b9b96",
+      "size": 848,
+      "strategy": "replace",
+      "format": null
+    }
+  ]
+}
