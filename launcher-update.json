@@ -1,16 +1,17 @@
 {
   "schema_version": 2,
-  "version": "0.5.2",
+  "version": "0.5.8",
   "mandatory": false,
   "changelog": "",
   "patch": {
     "url": "https://github.com/monkey52x/minecraft.x-ww/releases/download/launcher/patch.zip",
-    "size": 99168,
-    "sha256": "c3dfd22ffad03f099cbc27123ad41fb7f8367471b15d47b605cbfddb3b7b662a"
+    "size": 352519,
+    "sha256": "64498e2eee38c6b2b3ae104222086f5b48dae697af263a91007adea6d13af0e2"
   },
-  "installer": {
-    "url": "https://github.com/monkey52x/minecraft.x-ww/releases/download/launcher/Installer-X-WW-Launcher.exe",
-    "size": 178832943,
-    "sha256": "a398eec3f7064eceb7561fa17dc603003e1e90e0442ed4dcd849ef76c8eec477"
+  "runtime": {
+    "url": "https://github.com/monkey52x/minecraft.x-ww/releases/download/launcher/runtime.zip",
+    "size": 33820297,
+    "sha256": "0fa5cb62f4c4229539dfd91157dd25fdbf116ba8f4f20c4db4676db496d27e05",
+    "content_hash": "49991a434d0a8360cc614ffa15aab51963e319769aebf8dd04ead74352471226"
   }
 }
