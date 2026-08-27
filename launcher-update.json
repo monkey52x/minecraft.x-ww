@@ -1,17 +1,17 @@
 {
   "schema_version": 2,
-  "version": "0.6.3",
+  "version": "0.6.4",
   "mandatory": false,
   "changelog": "",
   "patch": {
     "url": "https://github.com/monkey52x/minecraft.x-ww/releases/download/launcher/patch.zip",
-    "size": 355166,
-    "sha256": "8c9a56bdb6b02878c8262cb04e07d85ddc54f19a5aaf48395edde0193cfc38ee"
+    "size": 355334,
+    "sha256": "cf3cc062936a73cd1feb67cbb6e694fdacab85511f47c60cfc58c5f1d345a6fe"
   },
   "runtime": {
     "url": "https://github.com/monkey52x/minecraft.x-ww/releases/download/launcher/runtime.zip",
-    "size": 33820296,
-    "sha256": "bea7cc739817e3b0579b71838287f19b4bfd14a7f57963a1d6f86c2126196fa2",
+    "size": 33820297,
+    "sha256": "089fe9935693006d9c488d76c01e9e744d10271c2bf9d8c0dd137e82f7657920",
     "content_hash": "49991a434d0a8360cc614ffa15aab51963e319769aebf8dd04ead74352471226"
   }
 }
